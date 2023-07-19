@@ -1,0 +1,134 @@
+[
+  {
+    "DNI": "15151515Z",
+    "NOMBRE": "Malena",
+    "APELLIDO": "Folgado",
+    "CIUDAD": "Logroño",
+    "DIRECCIONCALLE": "Obispo Fidel",
+    "DIRECCIONNUM": "3",
+    "TELEFONO": "941676767",
+    "FECHANACIMIENTO": "1980-05-05",
+    "VARON": 0
+  },
+  {
+    "DNI": "16161616A",
+    "NOMBRE": "Juan",
+    "APELLIDO": "Ramírez",
+    "CIUDAD": "Haro",
+    "DIRECCIONCALLE": "Pez",
+    "DIRECCIONNUM": "34",
+    "TELEFONO": "941111111",
+    "FECHANACIMIENTO": "1969-01-01",
+    "VARON": 1
+  },
+  {
+    "DNI": "17171717A",
+    "NOMBRE": "Laura",
+    "APELLIDO": "Beltran",
+    "CIUDAD": "Madrid",
+    "DIRECCIONCALLE": "Gran Vía",
+    "DIRECCIONNUM": "23",
+    "TELEFONO": "912121212",
+    "FECHANACIMIENTO": "1974-08-08",
+    "VARON": 0
+  },
+  {
+    "DNI": "18181818A",
+    "NOMBRE": "Pepe",
+    "APELLIDO": "Pérez",
+    "CIUDAD": "Madrid",
+    "DIRECCIONCALLE": "Percebe",
+    "DIRECCIONNUM": "13",
+    "TELEFONO": "913131313",
+    "FECHANACIMIENTO": "1980-02-02",
+    "VARON": 1
+  },
+  {
+    "DNI": "18181818H",
+    "NOMBRE": "Malena",
+    "APELLIDO": "Folgado",
+    "CIUDAD": "Logroño",
+    "DIRECCIONCALLE": "Comunidad",
+    "DIRECCIONNUM": "11",
+    "TELEFONO": "941151515",
+    "FECHANACIMIENTO": "1982-06-06",
+    "VARON": 0
+  },
+  {
+    "DNI": "19191919A",
+    "NOMBRE": "Juan",
+    "APELLIDO": "Sánchez",
+    "CIUDAD": "Bilbao",
+    "DIRECCIONCALLE": "Melancolía",
+    "DIRECCIONNUM": "7",
+    "TELEFONO": "944141414",
+    "FECHANACIMIENTO": "1966-03-03",
+    "VARON": 1
+  },
+  {
+    "DNI": "20202020A",
+    "NOMBRE": "Juan",
+    "APELLIDO": "Jiménez",
+    "CIUDAD": "Logroño",
+    "DIRECCIONCALLE": "Cigüeña",
+    "DIRECCIONNUM": "15",
+    "TELEFONO": "941151515",
+    "FECHANACIMIENTO": "1979-03-03",
+    "VARON": 1
+  },
+  {
+    "DNI": "21212121A",
+    "NOMBRE": "Rosa",
+    "APELLIDO": "García",
+    "CIUDAD": "Logroño",
+    "DIRECCIONCALLE": "Alegría",
+    "DIRECCIONNUM": "16",
+    "TELEFONO": "941161616",
+    "FECHANACIMIENTO": "1978-04-04",
+    "VARON": 0
+  },
+  {
+    "DNI": "23232323A",
+    "NOMBRE": "Jorge",
+    "APELLIDO": "Sáenz",
+    "CIUDAD": "Logroño",
+    "DIRECCIONCALLE": "Luis de Ulloa",
+    "DIRECCIONNUM": "17",
+    "TELEFONO": "941171717",
+    "FECHANACIMIENTO": "1978-09-09",
+    "VARON": 1
+  },
+  {
+    "DNI": "24242424A",
+    "NOMBRE": "María",
+    "APELLIDO": "Gutierrez",
+    "CIUDAD": "Logroño",
+    "DIRECCIONCALLE": "Avda. la Paz",
+    "DIRECCIONNUM": "18",
+    "TELEFONO": "941181818",
+    "FECHANACIMIENTO": "1964-10-10",
+    "VARON": 0
+  },
+  {
+    "DNI": "25252525A",
+    "NOMBRE": "Rosario",
+    "APELLIDO": "Díaz",
+    "CIUDAD": "Logroño",
+    "DIRECCIONCALLE": "Percebe",
+    "DIRECCIONNUM": "19",
+    "TELEFONO": "941191919",
+    "FECHANACIMIENTO": "1971-11-11",
+    "VARON": 0
+  },
+  {
+    "DNI": "26262626A",
+    "NOMBRE": "Elena",
+    "APELLIDO": "González",
+    "CIUDAD": "Logroño",
+    "DIRECCIONCALLE": "Percebe",
+    "DIRECCIONNUM": "20",
+    "TELEFONO": "941202020",
+    "FECHANACIMIENTO": "1975-05-05",
+    "VARON": 0
+  }
+]
