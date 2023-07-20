@@ -1,0 +1,47 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-22.04" # Imagen de Ubuntu 18.04 
+(compatible con Ubuntu 22.04)
+
+  config.vm.network "private_network", type: "dhcp" # Adaptador de 
+red privada para acceso a la máquina
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048" # Asignar 2 GB de memoria RAM a la máquina 
+virtual (ajustar según tu sistema)
+    vb.cpus = 1 # Asignar 1 núcleo de CPU a la máquina virtual 
+(ajustar según tu sistema)
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    # Actualizar repositorios e instalar paquetes requeridos
+    sudo apt-get update
+    sudo apt-get install -y openjdk-11-jdk
+
+    # Instalar Hadoop, Hive y Spark
+    # (Asegúrate de tener los enlaces de descarga actualizados 
+para las versiones requeridas)
+    wget -qO- 
+https://downloads.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz 
+| tar xvz -C /opt
+    wget -qO- 
+https://downloads.apache.org/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz 
+| tar xvz -C /opt
+    wget -qO- 
+https://downloads.apache.org/spark/spark-3.1.2/spark-3.1.2-bin-hadoop3.2.tgz 
+| tar xvz -C /opt
+
+    # Configurar variables de entorno para Hadoop y Spark
+    echo 'export HADOOP_HOME=/opt/hadoop-3.3.1' >> ~/.bashrc
+    echo 'export HIVE_HOME=/opt/apache-hive-3.1.2-bin' >> 
+~/.bashrc
+    echo 'export SPARK_HOME=/opt/spark-3.1.2-bin-hadoop3.2' >> 
+~/.bashrc
+    echo 'export 
+PATH=$PATH:$HADOOP_HOME/bin:$HIVE_HOME/bin:$SPARK_HOME/bin' >> 
+~/.bashrc
+
+    # Cargar las variables de entorno
+    source ~/.bashrc
+  SHELL
+end
+
