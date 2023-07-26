@@ -1,6 +1,8 @@
+# 
+
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-22.04" # Imagen de Ubuntu 22.04
-  config.vm.network "private_network", type: "dhcp" # Adaptador de red privada para acceso a la máquina
+  #config.vm.network "private_network", type: "dhcp" # Adaptador de red privada para acceso a la máquina
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048" # Asignar 2 GB de memoria RAM a la máquina virtual (ajustar según tu sistema)
     vb.cpus = 1 # Asignar 1 núcleo de CPU a la máquina virtual (ajustar según tu sistema)
