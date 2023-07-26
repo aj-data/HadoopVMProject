@@ -5,19 +5,38 @@ Vagrant.configure("2") do |config|
     vb.memory = "2048" # Asignar 2 GB de memoria RAM a la máquina virtual (ajustar según tu sistema)
     vb.cpus = 1 # Asignar 1 núcleo de CPU a la máquina virtual (ajustar según tu sistema)
     vb.gui = false # Desactivar interfaz gráfica
-    vb.name = "hadoop" # Nombre de la máquina virtual
+    vb.name = "node1" # Nombre de la máquina virtual
   end
   config.vm.network "forwarded_port", guest: 22, host: 22
+  config.vm.network "forwarded_port", guest: 2181, host: 2181
+  config.vm.network "forwarded_port", guest: 4040, host: 4040
+  config.vm.network "forwarded_port", guest: 8020, host: 8020
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
+  config.vm.network "forwarded_port", guest: 8088, host: 8088
+  config.vm.network "forwarded_port", guest: 9083, host: 9083
   config.vm.network "forwarded_port", guest: 9864, host: 9864
-  config.vm.network "forwarded_port", guest: 16010, host: 8088
   config.vm.network "forwarded_port", guest: 10000, host: 10000
   config.vm.network "forwarded_port", guest: 10002, host: 10002
-  config.vm.network "forwarded_port", guest: 8080, host: 8080
-  config.vm.network "forwarded_port", guest: 2181, host: 2181
+  config.vm.network "forwarded_port", guest: 18888, host: 18888
+  config.vm.network "forwarded_port", guest: 16010, host: 16010
+  
   config.vm.define "node1" do |node|
     node.vm.network :private_network, ip: '10.211.55.101'
     node.vm.hostname = 'node1'
-    node.vm.provision :shell, path: 'scripts/provision.sh'
+    node.vm.provision :shell, path: 'scripts/setup-ubuntu.sh'
+    node.vm.provision :shell, path: 'scripts/setup-java.sh'
+    node.vm.provision :shell, path: 'scripts/setup-hadoop.sh'
+    node.vm.provision :shell, path: 'scripts/setup-hive.sh'
+    node.vm.provision :shell, path: 'scripts/setup-spark.sh'
+    node.vm.provision :shell, path: 'scripts/setup-hbase.sh'
+    # Componentes opcionales - descomentar para incluir
+    #node.vm.provision :shell, path: 'scripts/setup-tez.sh'
+    #node.vm.provision :shell, path: 'scripts/setup-pig.sh'
+    #node.vm.provision :shell, path: 'scripts/setup-flume.sh'
+    #node.vm.provision :shell, path: 'scripts/setup-sqoop.sh'
+    #node.vm.provision :shell, path: 'scripts/setup-zeppelin.sh'
+    node.vm.provision :shell, path: 'scripts/finalize-ubuntu.sh'
+    node.vm.provision :shell, path: 'scripts/bootstrap.sh', run: 'always'
   end
 end
 
