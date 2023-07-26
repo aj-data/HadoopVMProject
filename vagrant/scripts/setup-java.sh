@@ -29,4 +29,3 @@ echo "setup java"
 installJava
 setupEnvVars
 setupMysqlConnector
-
