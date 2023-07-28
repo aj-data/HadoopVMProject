@@ -1,28 +1,31 @@
-#!/bin/bash
-
-# Crear usuario hadoop
-sudo useradd -m -s /bin/bash hadoop
-sudo passwd hadoop
-
-# Agregar al grupo sudo
-sudo usermod -aG sudo hadoop
-
-# Cambiar al usuario hadoop
-su - hadoop
-
-# Instalar SSH si no está instalado
-if ! dpkg -s openssh-server openssh-client >/dev/null 2>&1; then
-  sudo apt install -y openssh-server openssh-client
-fi
-
-# Generar llaves SSH
-ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa
-
-# Agregar llave pública a authorized_keys
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-
-# Cambiar permisos de authorized_keys
-chmod 0600 ~/.ssh/authorized_keys
-
-# Probar conexión SSH sin contraseña
-ssh -i ~/.ssh/id_rsa localhost
+#!/bin/bash  
+  
+function createUser {  
+    #echo "Creating 'hadoop' user..."
+	echo "Creando el usuario 'hadoop'..."  
+    sudo useradd -m -s /bin/bash hadoop  
+    echo "hadoop:${HADOOP_USER_PASSWORD}" | sudo chpasswd  
+    sudo usermod -aG sudo hadoop  
+}  
+  
+function setupSSH {  
+    #echo "Setting up SSH for 'hadoop' user..." 
+	echo "Configurando SSH para el usuario 'hadoop'..." 
+    sudo -u hadoop bash << EOF  
+    ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa -q  
+    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys  
+    chmod 0600 ~/.ssh/authorized_keys  
+EOF  
+}  
+  
+function installPackages {  
+    #echo "Installing necessary packages..."
+	echo "Instalando los paquetes necesarios..."  
+    sudo apt-get update  
+    sudo apt-get install -y openssh-server openssh-client  
+}  
+  
+# Call the functions 
+createUser  
+installPackages
+setupSSH
