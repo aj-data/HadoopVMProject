@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
     node.vm.hostname = 'node1'
     node.vm.provision "shell", path: "scripts/init-config.sh"  
     node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => ENV['HADOOP_USER_PASSWORD']}, path: "scripts/user-config.sh"
+    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => ENV['HADOOP_USER_PASSWORD']}, path: "scripts/setup-hadoop.sh"
     #node.vm.provision :shell, path: 'scripts/setup-ubuntu.sh'
     #node.vm.provision :shell, path: 'scripts/setup-java.sh'
     #node.vm.provision :shell, path: 'scripts/setup-hadoop.sh'
