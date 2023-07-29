@@ -13,5 +13,5 @@ function removeService {
 }  
   
 # Call the functions  
-stopService  
-removeService  
+stopService 
+removeService

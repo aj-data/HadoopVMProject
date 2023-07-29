@@ -3,7 +3,8 @@
 HADOOP_HOME=/home/hadoop/hadoop-3.3.0  
   
 function copyConfigFiles {  
-    echo "Copying configuration files..."  
+    #echo "Copying configuration files..."
+    echo "Copiando archivos de configuración..."
     sudo cp /vagrant/resources/hbase/core-site.xml $HADOOP_HOME/etc/hadoop/  
     sudo cp /vagrant/resources/hbase/hdfs-site.xml $HADOOP_HOME/etc/hadoop/  
     sudo chown hadoop:hadoop $HADOOP_HOME/etc/hadoop/core-site.xml  
@@ -11,18 +12,21 @@ function copyConfigFiles {
 }   
   
 function setupHDFSDirs {  
-    echo "Setting up HDFS directories..."  
+    #echo "Setting up HDFS directories..." 
+    echo "Configurando directorios HDFS..." 
     sudo mkdir -p /home/hadoop/hdfs/{namenode,datanode}  
     sudo chown -R hadoop:hadoop /home/hadoop/hdfs  
 }   
   
 function formatHDFS {  
-    echo "Formatting HDFS..."  
+    #echo "Formatting HDFS..." 
+    echo "Formateando HDFS..." 
     sudo -u hadoop $HADOOP_HOME/bin/hdfs namenode -format  
 }  
 
 function copyYarnConfigFiles {  
-    echo "Copying Yarn configuration files..."  
+    #echo "Copying Yarn configuration files..."
+    echo "Copiando archivos de configuración Yarn..."  
     sudo cp /vagrant/resources/hadoop/mapred-site.xml $HADOOP_HOME/etc/hadoop/  
     sudo cp /vagrant/resources/hadoop/yarn-site.xml $HADOOP_HOME/etc/hadoop/  
     sudo chown hadoop:hadoop $HADOOP_HOME/etc/hadoop/mapred-site.xml  
