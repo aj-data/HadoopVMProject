@@ -3,7 +3,7 @@
 # require 'dotenv'
 # Dotenv.load
 
-hadoop_user_password="PASSWOR_DHERE"
+hadoop_user_password="PASSWORD_HERE"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-22.04" # Imagen de Ubuntu 22.04
@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "node1" do |node|
     node.vm.network :private_network, ip: '10.211.55.101'
     node.vm.hostname = 'node1'
-    node.vm.provision "shell", path: "scripts/init-config.sh"
+    node.vm.provision :shell, path: "scripts/init-config.sh"
     node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/user-config.sh"  
     node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/user-config.sh"
     node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/setup-hadoop.sh"
