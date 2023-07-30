@@ -26,7 +26,7 @@ function installJava {
 function copyInitScript {  
     #echo "Copying init-script.sh to root..."  
     echo "Copiando init-script.sh..." 
-    sudo cp /vagrant/resources/scripts/init-script.sh /  
+    sudo cp /vagrant/resources/misc/init-script.sh /  
     # Dar permisos de ejecución al archivo  
     sudo chmod +x /init-script.sh 
 }
