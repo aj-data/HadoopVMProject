@@ -25,8 +25,24 @@ function setupHiveSite {
     #echo "Setting up hive-site.xml..."
     echo "Configurando hive-site.xml..."  
     cp $HIVE_HOME/conf/hive-default.xml.template $HIVE_HOME/conf/hive-site.xml  
-    # Add your properties to hive-site.xml here  
-}  
+    # Add your properties to hive-site.xml here
+    properties=(  
+    "javax.jdo.option.ConnectionURL jdbc:mysql://localhost/metastore_db?createDatabaseIfNotExist=true"  
+    "javax.jdo.option.ConnectionDriverName com.mysql.cj.jdbc.Driver"  
+    "javax.jdo.option.ConnectionUserName hiveuser"  
+    "javax.jdo.option.ConnectionPassword hivepassword"   
+    )  
+    
+    for i in "${properties[@]}"; do  
+        name=$(echo $i | cut -d' ' -f1)  
+        value=$(echo $i | cut -d' ' -f2)  
+        if grep -q "<name>$name</name>" $HIVE_HOME/conf/hive-site.xml; then  
+            sed -i "/<name>$name<\/name>/!b;n;c<value>$value</value>" $HIVE_HOME/conf/hive-site.xml  
+        else  
+            sed -i "/<\/configuration>/i <property>\n<name>$name</name>\n<value>$value</value>\n</property>" $HIVE_HOME/conf/hive-site.xml  
+        fi  
+    done   
+}   
   
 function installMySQLJavaConnector {  
     #echo "Installing MySQL Java Connector..."
@@ -49,7 +65,6 @@ function setupHiveLocation {
     hdfs dfs -chmod g+w /tmp  
     hdfs dfs -chmod g+w /user/hive/warehouse  
 }  
-   
   
 # Call the functions  
 setupHiveEnv  
