@@ -8,15 +8,24 @@ function createUser {
     sudo usermod -aG sudo hadoop  
 }  
   
-function setupSSH {  
-    #echo "Setting up SSH for 'hadoop' user..." 
-	echo "Configurando SSH para el usuario 'hadoop'..." 
-    sudo -u hadoop bash << EOF  
-    ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa -q  
-    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys  
-    chmod 0600 ~/.ssh/authorized_keys  
-EOF  
-}  
+# function setupSSH {  
+#     #echo "Setting up SSH for 'hadoop' user..." 
+# 	echo "Configurando SSH para el usuario 'hadoop'..." 
+#     sudo -u hadoop bash << EOF  
+#     ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa -q  
+#     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys  
+#     chmod 0600 ~/.ssh/authorized_keys  
+# EOF  
+# }
+
+function createSSHKey {
+	#echo "generating ssh key"
+    echo "Generando clave ssh"
+	ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa
+	cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+	#cp -f $RES_SSH_CONFIG ~/.ssh
+    chmod 0600 ~/.ssh/authorized_keys
+}
   
 function installPackages {  
     #echo "Installing necessary packages..."
@@ -27,4 +36,4 @@ function installPackages {
 # Call the functions 
 createUser  
 installPackages
-setupSSH
+createSSHKey
