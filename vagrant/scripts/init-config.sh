@@ -19,14 +19,14 @@ function createTempFolder {
 
 function installJava {
     echo "Instalando Java..."
-    sudo apt install openjdk-8-jdk
+    sudo apt-get install -y openjdk-8-jdk
 }
   
 # Copiar el archivo init-script.sh a la raíz del sistema operativo 
 function copyInitScript {  
     #echo "Copying init-script.sh to root..."  
     echo "Copiando init-script.sh..." 
-    sudo cp "/vagrant/resources/misc/init-script.sh" /  
+    sudo cp /vagrant/resources/misc/init-script.sh /  
     # Dar permisos de ejecución al archivo  
     sudo chmod +x /init-script.sh 
 }
