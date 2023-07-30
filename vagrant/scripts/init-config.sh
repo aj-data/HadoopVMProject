@@ -19,6 +19,7 @@ function createTempFolder {
 
 function installJava {
     echo "Instalando Java..."
+    sudo apt-get update 
     sudo apt-get install -y openjdk-8-jdk
 }
   
