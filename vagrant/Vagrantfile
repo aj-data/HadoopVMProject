@@ -1,7 +1,9 @@
 # 
 # Cargar las variables del archivo .env en el entorno
-require 'dotenv'
-Dotenv.load
+# require 'dotenv'
+# Dotenv.load
+
+hadoop_user_password="PASSWOR_DHERE"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-22.04" # Imagen de Ubuntu 22.04
@@ -27,14 +29,15 @@ Vagrant.configure("2") do |config|
   config.vm.define "node1" do |node|
     node.vm.network :private_network, ip: '10.211.55.101'
     node.vm.hostname = 'node1'
-    node.vm.provision "shell", path: "scripts/init-config.sh"  
-    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => ENV['HADOOP_USER_PASSWORD']}, path: "scripts/user-config.sh"
-    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => ENV['HADOOP_USER_PASSWORD']}, path: "scripts/setup-hadoop.sh"
-    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => ENV['HADOOP_USER_PASSWORD']}, path: "scripts/setup-hive.sh"
-    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => ENV['HADOOP_USER_PASSWORD']}, path: "scripts/setup-metastore.sh"
-    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => ENV['HADOOP_USER_PASSWORD']}, path: "scripts/setup-spark.sh"
-    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => ENV['HADOOP_USER_PASSWORD']}, path: "scripts/setup-hbase.sh"
-    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => ENV['HADOOP_USER_PASSWORD']}, path: "scripts/setup-jupyter.sh" 
+    node.vm.provision "shell", path: "scripts/init-config.sh"
+    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/user-config.sh"  
+    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/user-config.sh"
+    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/setup-hadoop.sh"
+    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/setup-hive.sh"
+    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/setup-metastore.sh"
+    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/setup-spark.sh"
+    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/setup-hbase.sh"
+    node.vm.provision "shell", env: {"HADOOP_USER_PASSWORD" => hadoop_user_password}, path: "scripts/setup-jupyter.sh" 
     #node.vm.provision :shell, path: 'scripts/setup-ubuntu.sh'
     # Componentes opcionales - descomentar para incluir
     #node.vm.provision :shell, path: 'scripts/setup-tez.sh'
