@@ -11,22 +11,10 @@ function downloadAndExtract {
 } 
 
 # Configurar variables de entorno de Hadoop
-function setupEnvVars {  
+function setupEnvVars {
     #echo "Setting up Hadoop environment variables..."
-    echo "Configurando variables de entorno de Hadoop..."  
-    echo '   
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64  
-    export HADOOP_HOME=/usr/local/hadoop  
-    export HADOOP_INSTALL=$HADOOP_HOME  
-    export HADOOP_MAPRED_HOME=$HADOOP_HOME  
-    export HADOOP_COMMON_HOME=$HADOOP_HOME  
-    export HADOOP_HDFS_HOME=$HADOOP_HOME  
-    export HADOOP_YARN_HOME=$HADOOP_HOME  
-    export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native  
-    export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin  
-    export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"  
-    ' >> ~/.bashrc    
-    source ~/.bashrc  
+    echo "Configurando variables de entorno de Hadoop..."
+    source /vagrant/resources/hadoop/hadoop-env.sh
 }
 
 # Incluir versión de Java en Hadoop
@@ -49,10 +37,10 @@ function setupHDFSDirs {
 function setupHdfsSite {  
     #echo "Setting up hdfs-site.xml..."
     echo "Configurando hdfs-site.xml..."  
-    sed -i '/<configuration>/a \  
-    <property>\n<name>dfs.replication</name>\n<value>1</value>\n</property>\n\  
-    <property>\n<name>dfs.name.dir</name>\n<value>file:///home/hadoop/hdfs/namenode</value>\n</property>\n\  
-    <property>\n<name>dfs.data.dir</name>\n<value>file:///home/hadoop/hdfs/datanode</value>\n</property>' $HADOOP_HOME/etc/hadoop/hdfs-site.xml  
+    hdfs_properties=$(cat /vagrant/resources/hadoop/hdfs-site.xml)
+    sed -i "/<\/configuration>/i\\
+    $hdfs_properties
+    " $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 }
 
 # Formatear sistema de archivos de Hadoop
@@ -66,32 +54,21 @@ function formatHDFS {
 function setupMapredSite {
     #echo "Setting up mapred-site.xml..."
     echo "Configurando mapred-site.xml..."  
-    echo '  
-    <property>  
-    <name>mapreduce.framework.name</name>  
-    <value>yarn</value>  
-    </property>  
-    <property>  
-    <name>mapreduce.application.classpath</name>  
-    <value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value>  
-    </property>  
-    ' >> $HADOOP_HOME/etc/hadoop/mapred-site.xml  
+    mapred_properties=$(cat /vagrant/resources/hadoop/mapred-site.xml)
+    sed -i "/<\/configuration>/i\\
+    $mapred_properties
+    " $HADOOP_HOME/etc/hadoop/mapred-site.xml
 }
 
 # Modificar yarn-site.xml
 function setupYarnSite {
     #echo "Setting up yarn-site.xml..."
     echo "Configurando yarn-site.xml..."  
-    echo '  
-    <property>  
-    <name>yarn.nodemanager.aux-services</name>  
-    <value>mapreduce_shuffle</value>  
-    </property>  
-    <property>  
-    <name>yarn.nodemanager.env-whitelist</name>  
-    <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_HOME,PATH,LANG,TZ,HADOOP_MAPRED_HOME</value>  
-    </property>  
-    ' >> $HADOOP_HOME/etc/hadoop/yarn-site.xml
+    echo "Configurando hdfs-site.xml..."  
+    yarn_properties=$(cat /vagrant/resources/hadoop/yarn-site.xml)
+    sed -i "/<\/configuration>/i\\
+    $yarn_properties
+    " $HADOOP_HOME/etc/hadoop/yarn-site.xml
 }  
 
 # Call the functions  
