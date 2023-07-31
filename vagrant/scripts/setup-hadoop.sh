@@ -16,7 +16,8 @@ function downloadAndExtract {
 function setupEnvVars {
     #echo "Setting up Hadoop environment variables..."
     echo "Configurando variables de entorno de Hadoop..."
-    $HADOOP_RES_DIR/hadoop.sh
+    cp -f $HADOOP_RES_DIR/hadoop.sh /etc/profile.d/hadoop.sh
+	. /etc/profile.d/hadoop.sh
 }
 
 # Incluir versión de Java en Hadoop
