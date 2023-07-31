@@ -8,6 +8,10 @@ function downloadAndExtract {
     echo "Descargando e instalando Hadoop..."  
     wget -P /tmp/temp https://dlcdn.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz  
     tar -xzvf /tmp/temp/hadoop-3.3.5.tar.gz -C /tmp/temp --remove-files  
+    # Verifica si /usr/local/hadoop es un archivo no directorio y lo elimina si es así  
+    if [[ -e /usr/local/hadoop && ! -d /usr/local/hadoop ]]; then  
+        sudo rm /usr/local/hadoop  
+    fi 
     sudo mv /tmp/temp/hadoop-3.3.5 /usr/local/hadoop
     sudo chown -R hadoop:hadoop /usr/local/hadoop   
 } 
@@ -71,11 +75,25 @@ function formatHDFS {
 # Modificar mapred-site.xml
 function setupMapredSite {
     #echo "Setting up mapred-site.xml..."
-    echo "Configurando mapred-site.xml..."  
-    mapred_properties=$(cat /vagrant/resources/hadoop/mapred-site.xml)
-    sed -i "/<\/configuration>/i\\
-    $mapred_properties
-    " $HADOOP_HOME/etc/hadoop/mapred-site.xml
+    mapred_xml=$(cat /vagrant/resources/hadoop/mapred-site.xml)
+    infile=$HADOOP_HOME/etc/hadoop/mapred-site.xml
+    outfile=/tmp/mapred-site.xml
+
+    copy=1
+    while read line; do
+    if [[ $line == *"<configuration>"* ]]; then
+        echo "$line"
+        echo "$mapred_xml" 
+        copy=0
+    elif [[ $line == *"</configuration>"* ]]; then
+        echo "$line"
+        copy=1
+    elif [[ $copy -eq 1 ]]; then
+        echo "$line"
+    fi  
+    done < "$infile" > "$outfile"
+
+    mv $outfile $infile
 }
 
 # Modificar yarn-site.xml
