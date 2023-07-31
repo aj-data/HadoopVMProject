@@ -4,7 +4,6 @@
 # Version information is defined the versions.sh file
 #
 source "/vagrant/scripts/versions.sh"
-
 # Curl options
 CURL_OPTS="-Ss --retry 10 "
 
