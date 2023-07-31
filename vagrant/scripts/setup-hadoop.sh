@@ -1,5 +1,7 @@
 #!/bin/bash  
-  
+
+source "/vagrant/scripts/common.sh"
+
 # Descargar e instalar Hadoop
 function downloadAndExtract {  
     #echo "Downloading and extracting Hadoop..."
@@ -14,7 +16,7 @@ function downloadAndExtract {
 function setupEnvVars {
     #echo "Setting up Hadoop environment variables..."
     echo "Configurando variables de entorno de Hadoop..."
-    source /vagrant/resources/hadoop/hadoop-env.sh
+    $HADOOP_RES_DIR/hadoop.sh
 }
 
 # Incluir versión de Java en Hadoop
