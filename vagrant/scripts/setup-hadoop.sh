@@ -6,9 +6,9 @@ source "/vagrant/scripts/common.sh"
 function downloadAndExtract {  
     #echo "Downloading and extracting Hadoop..."
     echo "Descargando e instalando Hadoop..."  
-    wget -P ~/temp https://dlcdn.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz  
-    tar -xzvf ~/temp/hadoop-3.3.5.tar.gz -C ~/temp --remove-files  
-    sudo mv ~/temp/hadoop-3.3.5.tar.gz /usr/local/hadoop
+    wget -P /tmp/temp https://dlcdn.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz  
+    tar -xzvf /tmp/temp/hadoop-3.3.5.tar.gz -C /tmp/temp --remove-files  
+    sudo mv /tmp/temp/hadoop-3.3.5.tar.gz /usr/local/hadoop
     sudo chown -R hadoop:hadoop /usr/local/hadoop   
 } 
 

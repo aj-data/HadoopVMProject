@@ -14,7 +14,7 @@ function removeService {
 
 function createTempFolder {
     echo "Creando carpeta temporal..."
-    mkdir temp
+    mkdir /tmp/temp
 }
 
 function installJava {

@@ -47,9 +47,9 @@ function setupHiveSite {
 function installMySQLJavaConnector {  
     #echo "Installing MySQL Java Connector..."
     echo "Instalando MySQL Java Connector..."  
-    wget -P ~/temp https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-8.0.32.tar.gz  
-    tar -xzvf ~/temp/mysql-connector-java-8.0.32.tar.gz -C ~/temp --remove-files  
-    cp ~/temp/mysql-connector-java-8.0.32/mysql-connector-java-8.0.32.jar $HIVE_HOME/lib/  
+    wget -P /tmp/temp https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-8.0.32.tar.gz  
+    tar -xzvf /tmp/temp/mysql-connector-java-8.0.32.tar.gz -C /tmp/temp --remove-files  
+    cp /tmp/temp/mysql-connector-java-8.0.32/mysql-connector-java-8.0.32.jar $HIVE_HOME/lib/  
 }  
   
 function initMetastore {  

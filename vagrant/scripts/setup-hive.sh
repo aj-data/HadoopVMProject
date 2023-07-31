@@ -3,9 +3,9 @@
 function downloadAndExtract {  
     #echo "Downloading and extracting Hive..."
     echo "Descargando e instalando Hive..."  
-    wget -P ~/temp https://archive.apache.org/dist/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz  
-    tar -xzvf ~/temp/apache-hive-3.1.3-bin.tar.gz -C ~/temp --remove-files  
-    sudo mv ~/temp/apache-hive-3.1.3-bin /usr/local/hive  
+    wget -P /tmp/temp https://archive.apache.org/dist/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz  
+    tar -xzvf /tmp/temp/apache-hive-3.1.3-bin.tar.gz -C /tmp/temp --remove-files  
+    sudo mv /tmp/temp/apache-hive-3.1.3-bin /usr/local/hive  
 }  
   
 function setupEnvironmentVars {  
