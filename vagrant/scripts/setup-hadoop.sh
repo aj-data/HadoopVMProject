@@ -8,7 +8,7 @@ function downloadAndExtract {
     echo "Descargando e instalando Hadoop..."  
     wget -P /tmp/temp https://dlcdn.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz  
     tar -xzvf /tmp/temp/hadoop-3.3.5.tar.gz -C /tmp/temp --remove-files  
-    sudo mv /tmp/temp/hadoop-3.3.5.tar.gz /usr/local/hadoop
+    sudo mv /tmp/temp/hadoop-3.3.5 /usr/local/hadoop
     sudo chown -R hadoop:hadoop /usr/local/hadoop   
 } 
 
@@ -40,10 +40,25 @@ function setupHDFSDirs {
 function setupHdfsSite {  
     #echo "Setting up hdfs-site.xml..."
     echo "Configurando hdfs-site.xml..."  
-    hdfs_properties=$(cat /vagrant/resources/hadoop/hdfs-site.xml)
-    sed -i "/<\/configuration>/i\\
-    $hdfs_properties
-    " $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+    hdfs_xml=$(cat /vagrant/resources/hadoop/hdfs-site.xml)
+    infile=$HADOOP_HOME/etc/hadoop/hdfs-site.xml
+    outfile=/tmp/hdfs-site.xml
+
+    copy=1
+    while read line; do
+    if [[ $line == *"<configuration>"* ]]; then
+        echo "$line"
+        echo "$hdfs_xml" 
+        copy=0
+    elif [[ $line == *"</configuration>"* ]]; then
+        echo "$line"
+        copy=1
+    elif [[ $copy -eq 1 ]]; then
+        echo "$line"
+    fi  
+    done < "$infile" > "$outfile"
+
+    mv $outfile $infile
 }
 
 # Formatear sistema de archivos de Hadoop
@@ -67,11 +82,25 @@ function setupMapredSite {
 function setupYarnSite {
     #echo "Setting up yarn-site.xml..."
     echo "Configurando yarn-site.xml..."  
-    echo "Configurando hdfs-site.xml..."  
-    yarn_properties=$(cat /vagrant/resources/hadoop/yarn-site.xml)
-    sed -i "/<\/configuration>/i\\
-    $yarn_properties
-    " $HADOOP_HOME/etc/hadoop/yarn-site.xml
+    yarn_xml=$(cat /vagrant/resources/hadoop/yarn-site.xml)
+    infile=$HADOOP_HOME/etc/hadoop/yarn-site.xml
+    outfile=/tmp/yarn-site.xml
+
+    copy=1
+    while read line; do
+    if [[ $line == *"<configuration>"* ]]; then
+        echo "$line"
+        echo "$yarn_xml" 
+        copy=0
+    elif [[ $line == *"</configuration>"* ]]; then
+        echo "$line"
+        copy=1
+    elif [[ $copy -eq 1 ]]; then
+        echo "$line"
+    fi  
+    done < "$infile" > "$outfile"
+
+    mv $outfile $infile
 }  
 
 # Call the functions  
