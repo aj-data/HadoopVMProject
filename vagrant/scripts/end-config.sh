@@ -1,7 +1,14 @@
-#!/bin/bash  
-  
-# Copia el archivo desde /resources/misc a la carpeta raíz  
-cp /vagrant/resources/misc/init-script.sh /root/  
-  
-# Otorga permisos de ejecución al archivo  
-chmod +x /root/init-script.sh  
+#!/bin/bash
+
+function createInitScrip {
+    SOURCE_FILE="/vagrant/resources/misc/init-script.sh"
+    DEST_FILE="/init-script.sh"
+
+    cp "$SOURCE_FILE" "$DEST_FILE"
+    chmod +x "$DEST_FILE"
+
+    echo "init-script.sh copiado y con permisos de ejecución"
+}
+
+# Call the functions 
+createInitScrip
