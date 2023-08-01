@@ -8,13 +8,13 @@ function downloadAndExtract {
     sudo mv /tmp/temp/apache-hive-3.1.3-bin /usr/local/hive  
 }  
   
-function setupEnvironmentVars {  
-    #echo "Setting up Hive environment variables..."
-    echo "Configurando variables de entorno de Hive..."  
-    echo 'export HIVE_HOME=/usr/local/hive' >> ~/.bashrc  
-    echo 'export PATH=$PATH:$HIVE_HOME/bin' >> ~/.bashrc  
-    source ~/.bashrc  
-}  
+# Configurar variables de entorno de Hive
+function setupEnvironmentVars {
+    #echo "Setting up Hadoop environment variables..."
+    echo "Configurando variables de entorno de Hive..."
+    cp -f $HIVE_RES_DIR/hadoop.sh /etc/profile.d/hive.sh
+	. /etc/profile.d/hive.sh
+}
   
 function fixWarnings {  
     #echo "Fixing Hive warning..."
