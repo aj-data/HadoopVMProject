@@ -22,7 +22,7 @@ function fixWarnings {
     #echo "Fixing Hive warning..."
     echo "Corrigiendo advertencia de Hive..."  
     #sudo rm /usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar
-    HIVE_SITE_XML="${HIVE_HOME}/conf/hive-site.xml"
+    HIVE_SITE_XML="/usr/local/hive/conf/hive-site.xml"
     PROP_NAME="hive.server2.enable.doAs"
     PROP_VALUE="false"
     if grep -q "$PROP_NAME" "$HIVE_SITE_XML"; then
