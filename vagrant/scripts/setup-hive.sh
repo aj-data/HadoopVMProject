@@ -12,7 +12,7 @@ function downloadAndExtract {
 function setupEnvironmentVars {
     #echo "Setting up Hadoop environment variables..."
     echo "Configurando variables de entorno de Hive..."
-    cp -f $HIVE_RES_DIR/hadoop.sh /etc/profile.d/hive.sh
+    cp -f $HIVE_RES_DIR/hive.sh /etc/profile.d/hive.sh
 	. /etc/profile.d/hive.sh
 }
   
