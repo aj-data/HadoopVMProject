@@ -21,8 +21,8 @@ function installVirtualEnv {
 function createVirtualEnv {  
     #echo "Creating virtual environment..."
     echo "Creando entorno virtual..."  
-    mkdir ~/mientorno  
-    cd ~/mientorno  
+    mkdir mientorno  
+    cd mientorno  
     virtualenv entornojupyter  
 }  
   
