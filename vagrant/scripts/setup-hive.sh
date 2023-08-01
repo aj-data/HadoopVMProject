@@ -1,5 +1,7 @@
 #!/bin/bash  
-  
+
+source "/vagrant/scripts/common.sh"
+
 function downloadAndExtract {  
     #echo "Downloading and extracting Hive..."
     echo "Descargando e instalando Hive..."  
@@ -19,7 +21,7 @@ function setupEnvironmentVars {
 function fixWarnings {  
     #echo "Fixing Hive warning..."
     echo "Corrigiendo advertencia de Hive..."  
-    sudo rm /usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar
+    #sudo rm /usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar
     sed -i 's|<name>hive.server2.enable.doAs</name>|<name>hive.server2.enable.doAs</name>\n<value>false</value>|' $HIVE_HOME/conf/hive-site.xml 
 }  
   
