@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function createInitScrip {
-    SOURCE_FILE="/vagrant/resources/misc/init-script.sh"
+    SOURC"
     DEST_FILE="init-script.sh"
 
     cp "$SOURCE_FILE" "$DEST_FILE"
