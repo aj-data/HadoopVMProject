@@ -17,8 +17,8 @@ function downloadAndExtract {
     if [[ -e /usr/local/hadoop && ! -d /usr/local/hadoop ]]; then  
         sudo rm /usr/local/hadoop  
     fi 
-    sudo mv /tmp/temp/hadoop-3.3.5 /usr/local/vagrant
-    sudo chown -R vagrant:vagrant /usr/local/vagrant   
+    sudo mv /tmp/temp/hadoop-3.3.5 /usr/local/hadoop
+    sudo chown -R vagrant:vagrant /usr/local/hadoop   
 }
 
 # Configurar variables de entorno de Hadoop
@@ -32,7 +32,7 @@ function downloadAndExtract {
 # Configurar variables de entorno de Hive
 function setupEnvironmentVars {
     #echo "Setting up Hadoop environment variables..."
-    echo "Configurando variables de entorno de Hive..."
+    echo "Configurando variables de entorno de Hadoop..."
     cp -f $HADOOP_RES_DIR/envs.sh /etc/profile.d/hadoop_envs.sh
 	. /etc/profile.d/hadoop_envs.sh
 } 
