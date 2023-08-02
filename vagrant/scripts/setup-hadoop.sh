@@ -119,9 +119,18 @@ function setupYarnSite {
     done < "$infile" > "$outfile"
 
     mv $outfile $infile
-}  
+}
 
-# Call the functions  
+# Switch to the hadoop user  
+su - hadoop << EOF  
+$(declare -f downloadAndExtract)
+$(declare -f setupEnvVars)
+$(declare -f setupJavaHome)
+$(declare -f setupHDFSDirs)
+$(declare -f setupHdfsSite)
+$(declare -f formatHDFS)
+$(declare -f setupMapredSite)
+$(declare -f setupYarnSite)  
 downloadAndExtract
 setupEnvVars
 setupJavaHome
@@ -129,4 +138,5 @@ setupHDFSDirs
 setupHdfsSite
 formatHDFS
 setupMapredSite
-setupYarnSite  
+setupYarnSite    
+EOF 
