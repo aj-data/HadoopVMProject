@@ -30,9 +30,9 @@ function setupJupyter {
     #echo "Activating virtual environment..."    
     #echo "Activando entorno virtual..."
     #source ~/mientorno/entornojupyter/bin/activate
+    echo "Configurando archivo de configuración de Jupyter..."
     pip install jupyter
-    jupyter notebook --generate-config
-    echo "Configurando archivo de configuración de Jupyter..."  
+    jupyter notebook --generate-config  
     echo "c.NotebookApp.ip = '0.0.0.0'" >> ~/.jupyter/jupyter_notebook_config.py  
     echo "c.NotebookApp.port = 8080" >> ~/.jupyter/jupyter_notebook_config.py  
     echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.py  
