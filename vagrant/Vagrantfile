@@ -1,10 +1,4 @@
 # 
-# Cargar las variables del archivo .env en el entorno
-# require 'dotenv'
-# Dotenv.load
-
-hadoop_user_password="PASSWORD_HERE"
-
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-22.04" # Imagen de Ubuntu 22.04
   #config.vm.network "private_network", type: "dhcp" # Adaptador de red privada para acceso a la máquina
