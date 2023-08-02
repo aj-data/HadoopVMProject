@@ -70,7 +70,7 @@ function setupHdfsSite {
 function formatHDFS {  
     #echo "Formatting HDFS..." 
     echo "Formateando HDFS..." 
-    sudo -u hadoop $HADOOP_HOME/bin/hdfs namenode -format  
+    sudo -u vagrant $HADOOP_HOME/bin/hdfs namenode -format  
 }
 
 # Modificar mapred-site.xml
