@@ -1,6 +1,7 @@
 #!/bin/bash  
 
 source "/vagrant/scripts/common.sh"
+HADOOP_HOME=/usr/local/hadoop
 
 # Descargar e instalar Hadoop
 function downloadAndExtract {  
@@ -122,21 +123,4 @@ function setupYarnSite {
 }
 
 # Switch to the hadoop user  
-su - hadoop << EOF  
-$(declare -f downloadAndExtract)
-$(declare -f setupEnvVars)
-$(declare -f setupJavaHome)
-$(declare -f setupHDFSDirs)
-$(declare -f setupHdfsSite)
-$(declare -f formatHDFS)
-$(declare -f setupMapredSite)
-$(declare -f setupYarnSite)  
-downloadAndExtract
-setupEnvVars
-setupJavaHome
-setupHDFSDirs
-setupHdfsSite
-formatHDFS
-setupMapredSite
-setupYarnSite    
-EOF 
+su hadoop -c "$(declare -f downloadAndExtract setupEnvVars setupJavaHome setupHDFSDirs setupHdfsSite formatHDFS setupMapredSite setupYarnSite); downloadAndExtract; setupEnvVars; setupJavaHome; setupHDFSDirs; setupHdfsSite; formatHDFS; setupMapredSite; setupYarnSite"
