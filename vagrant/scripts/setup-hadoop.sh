@@ -15,10 +15,10 @@ function downloadAndExtract {
     fi
     # Verifica si /usr/local/hadoop es un archivo no directorio y lo elimina si es así  
     if [[ -e /usr/local/hadoop && ! -d /usr/local/hadoop ]]; then  
-        sudo rm /usr/local/hadoop  
+        sudo rm /usr/local/hadoop
     fi 
     sudo mv /tmp/temp/hadoop-3.3.5 /usr/local/hadoop
-    sudo chown -R vagrant:vagrant /usr/local/hadoop   
+    sudo chown -R vagrant:vagrant /usr/local/hadoop 
 }
 
 # Configurar variables de entorno de Hadoop
