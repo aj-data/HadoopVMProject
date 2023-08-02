@@ -21,14 +21,6 @@ function downloadAndExtract {
     sudo chown -R vagrant:vagrant /usr/local/hadoop 
 }
 
-# Configurar variables de entorno de Hadoop
-#function setupEnvVars {
-#    #echo "Setting up Hadoop environment variables..."
-#    echo "Configurando variables de entorno de Hadoop..."
-#    cp -f $HADOOP_RES_DIR/hadoop.sh /etc/profile.d/hadoop.sh
-#	. /etc/profile.d/hadoop.sh
-#}
-
 # Configurar variables de entorno de Hive
 function setupEnvironmentVars {
     #echo "Setting up Hadoop environment variables..."
@@ -41,8 +33,7 @@ function setupEnvironmentVars {
 function setupJavaHome {  
     #echo "Setting up Java home in Hadoop configuration files..."
     echo "Configurando Java home en archivos de configuración de Hadoop..."  
-    sed -i '/export JAVA_HOME=${JAVA_HOME}/a \  
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64' $HADOOP_HOME/etc/hadoop/hadoop-env.sh  
+    echo "export JAVA_HOME=$JAVA_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh  
 }
 
 # Crear directorios para NameNode y DataNode y cambiar titularidad
@@ -134,9 +125,6 @@ function setupYarnSite {
 
     mv $outfile $infile
 }
-
-# Switch to the hadoop user  
-# su hadoop -c "$(declare -f downloadAndExtract setupEnvVars setupJavaHome setupHDFSDirs setupHdfsSite formatHDFS setupMapredSite setupYarnSite); downloadAndExtract; setupEnvVars; setupJavaHome; setupHDFSDirs; setupHdfsSite; formatHDFS; setupMapredSite; setupYarnSite"
 
 # Call the functions
 downloadAndExtract
