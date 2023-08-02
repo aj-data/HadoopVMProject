@@ -26,13 +26,24 @@ function upgradePip {
 #    virtualenv entornojupyter  
 #}  
   
-function setupJupyter {  
+function installJupyter {  
     #echo "Activating virtual environment..."    
     #echo "Activando entorno virtual..."
     #source ~/mientorno/entornojupyter/bin/activate
     echo "Instalando Jupyter..."
     pip install jupyter 
     #echo "c.NotebookApp.username = 'jupyterusername'" >> ~/.jupyter/jupyter_notebook_config.py    
+}
+
+function addEnvPath {
+    echo "Añadiendo ~/.local/bin a PATH..."
+    if ! echo $PATH | grep -q "~/.local/bin"; then
+        echo "export PATH=\$PATH:~/.local/bin" >> ~/.bashrc
+        source ~/.bashrc
+        echo "Added ~/.local/bin to PATH"
+    else
+        echo "~/.local/bin is already in PATH"
+    fi
 }
 
 function generateJupyterConfig {
@@ -53,7 +64,8 @@ function setupJupyter {
 # Call the functions  
 installPythonAndPip
 upgradePip
-setupJupyter
+installJupyter
+addEnvPath
 generateJupyterConfig
 setupJupyter  
 
