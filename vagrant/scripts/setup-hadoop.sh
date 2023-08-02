@@ -7,15 +7,19 @@ HADOOP_HOME=/usr/local/hadoop
 function downloadAndExtract {  
     #echo "Downloading and extracting Hadoop..."
     echo "Descargando e instalando Hadoop..."  
-    wget -P /tmp/temp https://dlcdn.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz  
-    tar -xzvf /tmp/temp/hadoop-3.3.5.tar.gz -C /tmp/temp --remove-files  
+    if [[ -e /vagrant/resources/hadoop/hadoop-3.3.5.tar.gz ]]; then
+        tar -xzvf /vagrant/resources/hadoop/hadoop-3.3.5.tar.gz -C /tmp/temp --remove-files  
+    else
+        wget -P /tmp/temp https://dlcdn.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz  
+        tar -xzvf /tmp/temp/hadoop-3.3.5.tar.gz -C /tmp/temp --remove-files  
+    fi
     # Verifica si /usr/local/hadoop es un archivo no directorio y lo elimina si es así  
     if [[ -e /usr/local/hadoop && ! -d /usr/local/hadoop ]]; then  
         sudo rm /usr/local/hadoop  
     fi 
-    sudo mv /tmp/temp/hadoop-3.3.5 /usr/local/hadoop
-    sudo chown -R hadoop:hadoop /usr/local/hadoop   
-} 
+    sudo mv /tmp/temp/hadoop-3.3.5 /usr/local/vagrant
+    sudo chown -R vagrant:vagrant /usr/local/vagrant   
+}
 
 # Configurar variables de entorno de Hadoop
 #function setupEnvVars {
@@ -37,7 +41,7 @@ function setupEnvVars {
         else
             echo "$line is already in PATH"
         fi
-    done < $HADOOP_RES_DIR/hadoop.sh
+    done < /vagrant/resources/hadoop/hadoop.sh
 }
 
 # Incluir versión de Java en Hadoop
@@ -52,8 +56,8 @@ function setupJavaHome {
 function setupHDFSDirs {  
     #echo "Setting up HDFS directories..." 
     echo "Configurando directorios HDFS..."
-    sudo mkdir -p /home/hadoop/hdfs/{namenode,datanode}  
-    sudo chown -R hadoop:hadoop /home/hadoop/hdfs  
+    sudo mkdir -p /home/vagrant/hdfs/{namenode,datanode}  
+    sudo chown -R vagrant:vagrant /home/vagrant/hdfs  
 } 
 
 # Modificar hdfs-site.xml
@@ -91,6 +95,7 @@ function formatHDFS {
 # Modificar mapred-site.xml
 function setupMapredSite {
     #echo "Setting up mapred-site.xml..."
+    echo "Configurando mapred-site.xml..."
     mapred_xml=$(cat /vagrant/resources/hadoop/mapred-site.xml)
     infile=$HADOOP_HOME/etc/hadoop/mapred-site.xml
     outfile=/tmp/mapred-site.xml

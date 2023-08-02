@@ -4,9 +4,9 @@
 </property>  
     <property>
     <name>dfs.name.dir</name>
-    <value>file:///home/hadoop/hdfs/namenode</value>
+    <value>file:///home/vagrant/hdfs/namenode</value>
 </property>
 <property>
     <name>dfs.data.dir</name>
-    <value>file:///home/hadoop/hdfs/datanode</value>
+    <value>file:///home/vagrant/hdfs/datanode</value>
 </property>
