@@ -29,20 +29,13 @@ function downloadAndExtract {
 #	. /etc/profile.d/hadoop.sh
 #}
 
-# Configurar variables de entorno de Hadoop
-function setupEnvVars {
+# Configurar variables de entorno de Hive
+function setupEnvironmentVars {
     #echo "Setting up Hadoop environment variables..."
-    echo "Configurando variables de entorno de Hadoop..."
-    while read -r line; do
-        if ! echo $PATH | grep -q "$line"; then
-            echo "$line" >> ~/.bashrc
-            source ~/.bashrc
-            echo "Added $line to PATH"
-        else
-            echo "$line is already in PATH"
-        fi
-    done < /vagrant/resources/hadoop/hadoop.sh
-}
+    echo "Configurando variables de entorno de Hive..."
+    cp -f $HADOOP_RES_DIR/envs.sh /etc/profile.d/hadoop_envs.sh
+	. /etc/profile.d/hadoop_envs.sh
+} 
 
 # Incluir versión de Java en Hadoop
 function setupJavaHome {  
@@ -147,7 +140,7 @@ function setupYarnSite {
 
 # Call the functions
 downloadAndExtract
-setupEnvVars
+setupEnvironmentVars
 setupJavaHome
 setupHDFSDirs
 setupHdfsSite
