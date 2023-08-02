@@ -16,4 +16,8 @@ function installPackages {
 }  
   
 # Switch to the hadoop user and run the functions  
-su hadoop -c "$(declare -f createSSHKey installPackages); createSSHKey; installPackages"  
+#su hadoop -c "$(declare -f createSSHKey installPackages); createSSHKey; installPackages" 
+
+# Call the functions
+createSSHKey
+installPackages

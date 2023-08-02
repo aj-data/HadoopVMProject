@@ -123,4 +123,14 @@ function setupYarnSite {
 }
 
 # Switch to the hadoop user  
-su hadoop -c "$(declare -f downloadAndExtract setupEnvVars setupJavaHome setupHDFSDirs setupHdfsSite formatHDFS setupMapredSite setupYarnSite); downloadAndExtract; setupEnvVars; setupJavaHome; setupHDFSDirs; setupHdfsSite; formatHDFS; setupMapredSite; setupYarnSite"
+# su hadoop -c "$(declare -f downloadAndExtract setupEnvVars setupJavaHome setupHDFSDirs setupHdfsSite formatHDFS setupMapredSite setupYarnSite); downloadAndExtract; setupEnvVars; setupJavaHome; setupHDFSDirs; setupHdfsSite; formatHDFS; setupMapredSite; setupYarnSite"
+
+# Call the functions
+downloadAndExtract
+setupEnvVars
+setupJavaHome
+setupHDFSDirs
+setupHdfsSite
+formatHDFS
+setupMapredSite
+setupYarnSite
