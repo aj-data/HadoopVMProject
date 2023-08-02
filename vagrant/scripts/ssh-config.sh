@@ -15,10 +15,5 @@ function installPackages {
     sudo apt-get install -y openssh-server openssh-client  
 }  
   
-# Switch to the hadoop user  
-su - hadoop << EOF  
-$(declare -f createSSHKey)  
-$(declare -f installPackages)  
-createSSHKey
-installPackages   
-EOF 
+# Switch to the hadoop user and run the functions  
+su hadoop -c "$(declare -f createSSHKey installPackages); createSSHKey; installPackages"  
