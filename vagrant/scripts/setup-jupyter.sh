@@ -26,42 +26,25 @@ function createVirtualEnv {
     virtualenv entornojupyter  
 }  
   
-function activateVirtualEnv {  
+function setupJupyter {  
     #echo "Activating virtual environment..."    
     echo "Activando entorno virtual..."
-    source ~/mientorno/entornojupyter/bin/activate  
-}  
-  
-function installJupyter {  
-    #echo "Installing Jupyter..." 
-    echo "Instalando Jupyter..." 
-    pip install jupyter  
-}  
-  
-function generateJupyterConfig {  
-    #echo "Generating Jupyter config file..." 
-    echo "Generando archivo de configuración de Jupyter..." 
-    jupyter notebook --generate-config  
-}  
-  
-function setupJupyterConfig {  
-    #echo "Setting up Jupyter config file..."
+    source ~/mientorno/entornojupyter/bin/activate
+    pip install jupyter
+    jupyter notebook --generate-config
     echo "Configurando archivo de configuración de Jupyter..."  
     echo "c.NotebookApp.ip = '0.0.0.0'" >> ~/.jupyter/jupyter_notebook_config.py  
     echo "c.NotebookApp.port = 8080" >> ~/.jupyter/jupyter_notebook_config.py  
     echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.py  
-    echo "c.NotebookApp.password_required = True" >> ~/.jupyter/jupyter_notebook_config.py  
-    echo "from notebook.auth import passwd" >> ~/.jupyter/jupyter_notebook_config.py  
-    echo "c.NotebookApp.password = passwd('jupyterpassword')" >> ~/.jupyter/jupyter_notebook_config.py  
-    echo "c.NotebookApp.username = 'jupyterusername'" >> ~/.jupyter/jupyter_notebook_config.py  
-}  
+    #echo "c.NotebookApp.password_required = True" >> ~/.jupyter/jupyter_notebook_config.py  
+    #echo "from notebook.auth import passwd" >> ~/.jupyter/jupyter_notebook_config.py  
+    echo "c.NotebookApp.password = 'sha1:b39920d9193882c2f3416adba59f639555e12657'" >> ~/.jupyter/jupyter_notebook_config.py  
+    #echo "c.NotebookApp.username = 'jupyterusername'" >> ~/.jupyter/jupyter_notebook_config.py    
+}   
   
 # Call the functions  
 installPythonAndPip  
 upgradePip  
 installVirtualEnv  
-createVirtualEnv  
-activateVirtualEnv  
-installJupyter  
-generateJupyterConfig  
-setupJupyterConfig  
+createVirtualEnv   
+setupJupyter 
