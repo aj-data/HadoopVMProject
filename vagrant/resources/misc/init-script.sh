@@ -24,7 +24,8 @@ $HBASE_HOME/bin/start-hbase.sh >> $LOG 2>&1
 echo "HBase iniciado correctamente." | tee -a $LOG
 
 echo "Iniciando Jupyter..." | tee -a $LOG
-cd /home/vagrant/mientorno && source entornojupyter/bin/activate ; jupyter notebook >> $LOG 2>&1
+#cd /home/vagrant/mientorno && source entornojupyter/bin/activate ; jupyter notebook >> $LOG 2>&1 &
+jupyter notebook >> $LOG 2>&1 &
 echo "Jupyter iniciado correctamente." | tee -a $LOG
 
 echo "Servicios iniciados y registro en $LOG"

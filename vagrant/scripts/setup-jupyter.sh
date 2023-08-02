@@ -12,24 +12,24 @@ function upgradePip {
     sudo pip3 install --upgrade pip  
 }  
   
-function installVirtualEnv {  
-    #echo "Installing Virtualenv..." 
-    echo "Instalando Virtualenv..." 
-    sudo pip3 install virtualenv  
-}  
+#function installVirtualEnv {  
+#    #echo "Installing Virtualenv..." 
+#    echo "Instalando Virtualenv..." 
+#    sudo pip3 install virtualenv  
+#}  
   
-function createVirtualEnv {  
-    #echo "Creating virtual environment..."
-    echo "Creando entorno virtual..."  
-    mkdir mientorno  
-    cd mientorno  
-    virtualenv entornojupyter  
-}  
+#function createVirtualEnv {  
+#    #echo "Creating virtual environment..."
+#    echo "Creando entorno virtual..."  
+#    mkdir mientorno  
+#    cd mientorno  
+#    virtualenv entornojupyter  
+#}  
   
 function setupJupyter {  
     #echo "Activating virtual environment..."    
-    echo "Activando entorno virtual..."
-    source ~/mientorno/entornojupyter/bin/activate
+    #echo "Activando entorno virtual..."
+    #source ~/mientorno/entornojupyter/bin/activate
     pip install jupyter
     jupyter notebook --generate-config
     echo "Configurando archivo de configuración de Jupyter..."  
