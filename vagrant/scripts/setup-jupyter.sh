@@ -36,7 +36,7 @@ function setupJupyter {
 }
 
 function generateJupyterConfig {
-    echo "Configurando Jupyter..."
+    echo "Generando configuración de Jupyter..."
     jupyter notebook --generate-config  
 }
 
