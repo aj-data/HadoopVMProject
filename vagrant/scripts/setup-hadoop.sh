@@ -21,12 +21,12 @@ function downloadAndExtract {
     sudo chown -R vagrant:vagrant /usr/local/hadoop 
 }
 
-# Configurar variables de entorno de Hive
+# Configurar variables de entorno de Hadoop
 function setupEnvironmentVars {
     #echo "Setting up Hadoop environment variables..."
     echo "Configurando variables de entorno de Hadoop..."
-    sudo cp -f $HADOOP_RES_DIR/envs.sh /usr/local/scripts
-	/usr/local/scripts/hadoop_envs.sh
+    sudo cp -f $HADOOP_RES_DIR/hdp_envs.sh /usr/local/scripts
+	/usr/local/scripts/hdp_envs.sh
 } 
 
 # Incluir versión de Java en Hadoop
