@@ -24,8 +24,8 @@ function createScriptsFolder {
 
 function installJava {
     echo "Instalando Java..."
-    #sudo apt-get update 
-    apt-get install -y openjdk-8-jdk-headless
+    sudo apt-get update 
+    sudo apt-get install -y openjdk-8-jdk
 }
 
 # Copiar el archivo init-script.sh a la raíz del sistema operativo 
