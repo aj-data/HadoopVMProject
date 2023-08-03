@@ -32,8 +32,9 @@ function setupEnvironmentVars {
 # Incluir versión de Java en Hadoop
 function setupJavaHome {  
     #echo "Setting up Java home in Hadoop configuration files..."
-    echo "Configurando Java home en archivos de configuración de Hadoop..."  
-    echo "export JAVA_HOME=$JAVA_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh  
+    echo "Configurando variables de entorno de Hadoop..."
+    cp -f $HADOOP_RES_DIR/java-home.sh /etc/profile.d/java-home.sh
+	. /etc/profile.d/java-home.sh
 }
 
 # Crear directorios para NameNode y DataNode y cambiar titularidad
