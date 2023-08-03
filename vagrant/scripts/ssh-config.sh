@@ -9,9 +9,10 @@ function installPackages {
 function createSSHKey {
 	#echo "generating ssh key"
     echo "Generando clave ssh"
-    cp -f /vagrant/resources/misc/ssh-key.sh /etc/profile.d/ssh-key.sh
-	. /etc/profile.d/ssh-key.sh
-} 
+    cp -f /vagrant/resources/misc/ssh-key.sh /usr/local/scripts/profile.d/ssh-key.sh
+	sudo chmod +x /usr/local/scripts/profile.d/ssh-key.sh
+    /usr/local/scripts/profile.d/ssh-key.sh
+}
 
 # Call the functions
 installPackages

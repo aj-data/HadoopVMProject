@@ -17,6 +17,11 @@ function createTempFolder {
     mkdir /tmp/temp
 }
 
+function createScriptsFolder {
+    echo "Creando carpeta de scripts..."
+    mkdir /usr/local/scripts
+}
+
 function installJava {
     echo "Instalando Java..."
     sudo apt-get update 
@@ -27,7 +32,7 @@ function installJava {
 function copyInitScript {  
     #echo "Copying init-script.sh to root..."  
     echo "Copiando init-script.sh..." 
-    sudo cp /vagrant/resources/misc/init-script.sh / 
+    sudo cp /vagrant/resources/misc/init-script.sh /
     sudo chmod +x /init-script.sh 
 }
 
@@ -35,5 +40,6 @@ function copyInitScript {
 stopService 
 removeService
 createTempFolder
+createScriptsFolder
 installJava
 copyInitScript
