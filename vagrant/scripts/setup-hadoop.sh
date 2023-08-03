@@ -25,10 +25,9 @@ function downloadAndExtract {
 function setupEnvironmentVars {
     #echo "Setting up Hadoop environment variables..."
     echo "Configurando variables de entorno de Hadoop..."
-    sudo cp -f $HADOOP_RES_DIR/hdp_envs.sh /usr/local/scripts
-    chmod +x /usr/local/scripts/hdp_envs.sh
-	/usr/local/scripts/hdp_envs.sh
-} 
+	cp -f $HADOOP_RES_DIR/hadoop.sh /etc/profile.d/hadoop.sh
+	. /etc/profile.d/hadoop.sh
+}
 
 # Incluir versión de Java en Hadoop
 function setupJavaHome {  
