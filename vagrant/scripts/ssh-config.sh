@@ -7,11 +7,11 @@ function installPackages {
 }
 
 function createSSHKey {
-	#echo "generating ssh key"
-    echo "Generando clave ssh"
-    cp -f /vagrant/resources/misc/ssh-key.sh /usr/local/scripts
-	sudo chmod +x /usr/local/scripts/ssh-key.sh
-    /usr/local/scripts/ssh-key.sh
+    echo "Creando par de claves ssh..."
+    ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa
+	cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+    #chmod 0600 ~/.ssh/authorized_keys
+    cp -f /vagrant/resources/ssh/config ~/.ssh
 }
 
 # Call the functions
