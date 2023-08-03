@@ -1,16 +1,13 @@
 #!/bin/sh
 
-function setupJavaHome {
-    #echo "Setting up Java home in Hadoop configuration files..."
-    echo "Configurando Java home en archivos de configuración de Hadoop..." 
-    while read -r line; do
-        if ! echo $PATH | grep -q "$line"; then
-            echo "$line" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
-            echo "Added $line to hadoop-env.sh"
-        else
-            echo "$line is already in hadoop-env.sh"
-        fi
-    done < /vagrant/resources/hadoop/java.sh
+function addJavaHome {
+    echo "Añadiendo  JAVA_HOME al archivo hadoop-env.sh..."
+    if ! grep -q "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" "$HADOOP_HOME/etc/hadoop/hadoop-env.sh"; then
+        echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> "$HADOOP_HOME/etc/hadoop/hadoop-env.sh"
+        echo "Línea agregada al archivo $HADOOP_HOME/etc/hadoop/hadoop-env.sh"
+    else
+        echo "La línea ya existe en el archivo $HADOOP_HOME/etc/hadoop/hadoop-env.sh"
+    fi
 }
 
-setupJavaHome
+addJavaHome
