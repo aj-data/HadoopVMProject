@@ -14,10 +14,6 @@ function createSSHKey {
 	#cp -f $RES_SSH_CONFIG ~/.ssh
     chmod 0600 ~/.ssh/authorized_keys
 }
- 
-  
-# Switch to the hadoop user and run the functions  
-#su hadoop -c "$(declare -f createSSHKey installPackages); createSSHKey; installPackages" 
 
 # Call the functions
 installPackages
