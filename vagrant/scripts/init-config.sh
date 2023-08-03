@@ -24,8 +24,14 @@ function createScriptsFolder {
 
 function installJava {
     echo "Instalando Java..."
-    sudo apt-get update 
-    sudo apt-get install -y openjdk-8-jdk
+    if [ -f "/vagrant/resources/misc/OpenJDK8U-jdk_x64_linux.tar.gz" ]; then
+        sudo tar -xzf /vagrant/resources/misc/OpenJDK8U-jdk_x64_linux.tar.gz -C /usr/lib/jvm/
+        sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_221/bin/java 1
+        sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_221/bin/javac 1
+    else
+        sudo apt-get update 
+        sudo apt-get install -y openjdk-8-jdk
+    fi
 }
 
 # Copiar el archivo init-script.sh a la raíz del sistema operativo 
