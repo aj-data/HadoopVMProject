@@ -26,6 +26,7 @@ function setupEnvironmentVars {
     #echo "Setting up Hadoop environment variables..."
     echo "Configurando variables de entorno de Hadoop..."
     sudo cp -f $HADOOP_RES_DIR/hdp_envs.sh /usr/local/scripts
+    chmod +x /usr/local/scripts/hdp_envs.sh
 	/usr/local/scripts/hdp_envs.sh
 } 
 
@@ -34,6 +35,7 @@ function setupJavaHome {
     #echo "Setting up Java home in Hadoop configuration files..."
     echo "Configurando variables de entorno de Hadoop..."
     cp -f $HADOOP_RES_DIR/java-home.sh /usr/local/scripts
+    chmod +x /usr/local/scripts/java-home.sh
 	/usr/local/scripts/java-home.sh
 }
 
