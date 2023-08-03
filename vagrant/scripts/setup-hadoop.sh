@@ -27,6 +27,8 @@ function setupEnvironmentVars {
     echo "Configurando variables de entorno de Hadoop..."
 	cp -f $HADOOP_RES_DIR/hadoop.sh /etc/profile.d/hadoop.sh
 	. /etc/profile.d/hadoop.sh
+     echo "Agregando variables al PATH..."
+    /vagrant/resources/hadoop/hdp_envs.sh
 }
 
 # Incluir versión de Java en Hadoop
