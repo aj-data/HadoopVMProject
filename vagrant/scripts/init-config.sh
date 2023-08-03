@@ -27,7 +27,7 @@ function installJava {
     #sudo apt-get update 
     apt-get install -y openjdk-8-jdk
 }
-  
+
 # Copiar el archivo init-script.sh a la raíz del sistema operativo 
 function copyInitScript {  
     #echo "Copying init-script.sh to root..."  
