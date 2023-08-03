@@ -34,10 +34,17 @@ function setupEnvironmentVars {
 # Incluir versión de Java en Hadoop
 function setupJavaHome {  
     #echo "Setting up Java home in Hadoop configuration files..."
-    echo "Configurando variables de entorno de Hadoop..."
+    echo "Configurando variables de entorno de Java de Hadoop..."
     cp -f $HADOOP_RES_DIR/java-home.sh /usr/local/scripts
     chmod +x /usr/local/scripts/java-home.sh
 	/usr/local/scripts/java-home.sh
+}
+
+# Modificar CORE-site.xml
+function setupCoreSite {  
+    #echo "Setting up core-site.xml..."
+    echo "Configurando core-site.xml..."
+    sudo cp -f $HADOOP_RES_DIR/core-site.xml  $HADOOP_HOME/etc/hadoop/core-site.xml
 }
 
 # Crear directorios para NameNode y DataNode y cambiar titularidad
@@ -51,26 +58,8 @@ function setupHDFSDirs {
 # Modificar hdfs-site.xml
 function setupHdfsSite {  
     #echo "Setting up hdfs-site.xml..."
-    echo "Configurando hdfs-site.xml..."  
-    hdfs_xml=$(cat /vagrant/resources/hadoop/hdfs-site.xml)
-    infile=$HADOOP_HOME/etc/hadoop/hdfs-site.xml
-    outfile=/tmp/hdfs-site.xml
-
-    copy=1
-    while read line; do
-    if [[ $line == *"<configuration>"* ]]; then
-        echo "$line"
-        echo "$hdfs_xml" 
-        copy=0
-    elif [[ $line == *"</configuration>"* ]]; then
-        echo "$line"
-        copy=1
-    elif [[ $copy -eq 1 ]]; then
-        echo "$line"
-    fi  
-    done < "$infile" > "$outfile"
-
-    mv $outfile $infile
+    echo "Configurando hdfs-site.xml..."
+    sudo cp -f $HADOOP_RES_DIR/hdfs-site.xml  $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 }
 
 # Formatear sistema de archivos de Hadoop
@@ -84,56 +73,21 @@ function formatHDFS {
 function setupMapredSite {
     #echo "Setting up mapred-site.xml..."
     echo "Configurando mapred-site.xml..."
-    mapred_xml=$(cat /vagrant/resources/hadoop/mapred-site.xml)
-    infile=$HADOOP_HOME/etc/hadoop/mapred-site.xml
-    outfile=/tmp/mapred-site.xml
-
-    copy=1
-    while read line; do
-    if [[ $line == *"<configuration>"* ]]; then
-        echo "$line"
-        echo "$mapred_xml" 
-        copy=0
-    elif [[ $line == *"</configuration>"* ]]; then
-        echo "$line"
-        copy=1
-    elif [[ $copy -eq 1 ]]; then
-        echo "$line"
-    fi  
-    done < "$infile" > "$outfile"
-
-    mv $outfile $infile
+    sudo cp -f $HADOOP_RES_DIR/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 }
 
 # Modificar yarn-site.xml
 function setupYarnSite {
     #echo "Setting up yarn-site.xml..."
-    echo "Configurando yarn-site.xml..."  
-    yarn_xml=$(cat /vagrant/resources/hadoop/yarn-site.xml)
-    infile=$HADOOP_HOME/etc/hadoop/yarn-site.xml
-    outfile=/tmp/yarn-site.xml
-
-    copy=1
-    while read line; do
-    if [[ $line == *"<configuration>"* ]]; then
-        echo "$line"
-        echo "$yarn_xml" 
-        copy=0
-    elif [[ $line == *"</configuration>"* ]]; then
-        echo "$line"
-        copy=1
-    elif [[ $copy -eq 1 ]]; then
-        echo "$line"
-    fi  
-    done < "$infile" > "$outfile"
-
-    mv $outfile $infile
+    echo "Configurando yarn-site.xml..."
+    sudo cp -f $HADOOP_RES_DIR/yarn-site.xml  $HADOOP_HOME/etc/hadoop/yarn-site.xml
 }
 
 # Call the functions
 downloadAndExtract
 setupEnvironmentVars
 setupJavaHome
+setupCoreSite
 setupHDFSDirs
 setupHdfsSite
 formatHDFS
