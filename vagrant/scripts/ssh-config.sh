@@ -12,7 +12,7 @@ function overwriteSSHCopyId {
 }
 
 function createSSHKey {
-	echo "generating ssh key"
+	#echo "generating ssh key"
     echo "Generando clave ssh"
 	ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa
 	cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
