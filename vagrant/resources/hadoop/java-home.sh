@@ -5,11 +5,10 @@ function setupJavaHome {
     echo "Configurando Java home en archivos de configuración de Hadoop..." 
     while read -r line; do
         if ! echo $PATH | grep -q "$line"; then
-            echo "$line" >> ~/.bashrc
-            source ~/.bashrc
-            echo "Added $line to PATH"
+            echo "$line" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+            echo "Added $line to hadoop-env.sh"
         else
-            echo "$line is already in PATH"
+            echo "$line is already in hadoop-env.sh"
         fi
     done < /vagrant/resources/hadoop/java.sh
 }
