@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function installJava {
     echo "Descargando Java..."
     wget -q --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "https://download.oracle.com/otn-pub/java/jdk/8u301-b09/d3c52aa6bfa54d3ca74e617f18309292/jdk-8u301-linux-x64.tar.gz" -P /tmp
@@ -11,3 +13,5 @@ function installJava {
     update-alternatives --set java /usr/local/jdk1.8.0_301/bin/java
     update-alternatives --set javac /usr/local/jdk1.8.0_301/bin/javac
 }
+
+installJava
