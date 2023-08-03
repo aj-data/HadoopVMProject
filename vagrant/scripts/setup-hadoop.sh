@@ -33,8 +33,8 @@ function setupEnvironmentVars {
 function setupJavaHome {  
     #echo "Setting up Java home in Hadoop configuration files..."
     echo "Configurando variables de entorno de Hadoop..."
-    cp -f $HADOOP_RES_DIR/java-home.sh /usr/local/scripts/profile.d
-	/usr/local/scripts/profile.d/java-home.sh
+    cp -f $HADOOP_RES_DIR/java-home.sh /usr/local/scripts
+	/usr/local/scripts/java-home.sh
 }
 
 # Crear directorios para NameNode y DataNode y cambiar titularidad
