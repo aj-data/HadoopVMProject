@@ -25,7 +25,7 @@ function downloadAndExtract {
 function setupEnvironmentVars {
     #echo "Setting up Hadoop environment variables..."
     echo "Configurando variables de entorno de Hadoop..."
-    sudo cp -f $HADOOP_RES_DIR/envs.sh /usr/local/scripts/hadoop_envs.sh
+    sudo cp -f $HADOOP_RES_DIR/envs.sh /usr/local/scripts
 	/usr/local/scripts/hadoop_envs.sh
 } 
 
@@ -33,7 +33,7 @@ function setupEnvironmentVars {
 function setupJavaHome {  
     #echo "Setting up Java home in Hadoop configuration files..."
     echo "Configurando variables de entorno de Hadoop..."
-    cp -f $HADOOP_RES_DIR/java-home.sh /usr/local/scripts/profile.d/java-home.sh
+    cp -f $HADOOP_RES_DIR/java-home.sh /usr/local/scripts/profile.d
 	/usr/local/scripts/profile.d/java-home.sh
 }
 
