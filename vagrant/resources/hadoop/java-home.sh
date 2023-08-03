@@ -1,5 +1,7 @@
 #!/bin/bash
 
+HADOOP_HOME=/usr/local/hadoop
+
 function addJavaHome {
     echo "Añadiendo  JAVA_HOME al archivo hadoop-env.sh..."
     if ! grep -q "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" "$HADOOP_HOME/etc/hadoop/hadoop-env.sh"; then
