@@ -1,19 +1,25 @@
 #!/bin/bash  
-  
-function installPackages {  
-    #echo "Installing necessary packages..."
-	echo "Instalando los paquetes necesarios..."   
-    sudo apt-get install -y openssh-server openssh-client  
+
+source "/vagrant/scripts/common.sh"
+
+function installSSHPass {
+	apt-get update
+	apt-get install -y sshpass
+}
+
+function overwriteSSHCopyId {
+	cp -f $RES_SSH_COPYID_MODIFIED /usr/bin/ssh-copy-id
 }
 
 function createSSHKey {
-    echo "Creando par de claves ssh..."
-    ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa
+	echo "generating ssh key"
+    echo "Generando clave ssh"
+	ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa
 	cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-    chmod 0600 ~/.ssh/authorized_keys
-    cp -f /vagrant/resources/ssh/config ~/.ssh
+	cp -f $RES_SSH_CONFIG ~/.ssh
 }
 
 # Call the functions
-installPackages
+installSSHPass
 createSSHKey
+overwriteSSHCopyId
