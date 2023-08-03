@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function setupEnvVars {
     #echo "Setting up Hadoop environment variables..."

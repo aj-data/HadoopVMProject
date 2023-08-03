@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function addJavaHome {
     echo "Añadiendo  JAVA_HOME al archivo hadoop-env.sh..."

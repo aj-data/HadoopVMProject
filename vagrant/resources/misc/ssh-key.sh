@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function SSHKey {
     ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
