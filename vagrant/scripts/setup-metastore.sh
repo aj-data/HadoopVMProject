@@ -44,6 +44,11 @@ function setupHiveSite {
     done     
 }
 
+function fixWarning {
+    echo "Corrigiendo advertencia de símbolo no válido..."
+    sudo sed -i "s/r&#8;/ /g" "/usr/local/hive/conf/hive-site.xml"
+}
+
 function installMySQLJavaConnector {
     #echo "Installing MySQL Java Connector..."
     echo "Instalando MySQL Java Connector..."
@@ -71,7 +76,6 @@ setupHiveEnv
 installMySQL
 setupMetastoreDB
 setupHiveSite
-fixWarnings
 installMySQLJavaConnector
 initMetastore
 setupHiveLocation
