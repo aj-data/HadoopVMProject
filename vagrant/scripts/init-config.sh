@@ -22,6 +22,15 @@ function createScriptsFolder {
     mkdir /usr/local/scripts
 }
 
+function setupHosts {
+	echo "modifying /etc/hosts file"
+        echo "127.0.0.1 node1" >> /etc/nhosts
+	echo "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4" >> /etc/nhosts
+	echo "::1         localhost localhost.localdomain localhost6 localhost6.localdomain6" >> /etc/nhosts
+	cp /etc/nhosts /etc/hosts
+	rm -f /etc/nhosts
+}
+
 function installJava {
     echo "Instalando Java..."
     if [ -f "/vagrant/resources/misc/OpenJDK8U-jdk_x64_linux.tar.gz" ]; then
@@ -32,6 +41,21 @@ function installJava {
         sudo apt-get update 
         sudo apt-get install -y openjdk-8-jdk
     fi
+}
+
+function setupSwap {
+    # setup swapspace daemon to allow more memory usage.
+    apt-get install -y swapspace
+}
+
+function setupUtilities {
+    # so the `locate` command works
+    apt-get install -y mlocate
+    updatedb
+    apt-get install -y ant
+    apt-get install -y unzip
+    apt-get install -y python-minimal
+    apt-get install -y curl apt-utils
 }
 
 # Copiar el archivo init-script.sh a la raíz del sistema operativo 
@@ -47,5 +71,8 @@ stopService
 removeService
 createTempFolder
 createScriptsFolder
+setupHosts
 installJava
+setupSwap
+setupUtilities
 copyInitScript
