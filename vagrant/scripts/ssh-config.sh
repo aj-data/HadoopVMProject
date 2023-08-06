@@ -14,9 +14,9 @@ function overwriteSSHCopyId {
 function createSSHKey {
 	#echo "generating ssh key"
     echo "Generando clave ssh"
-	ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa
-	cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-	cp -f $RES_SSH_CONFIG ~/.ssh
+	ssh-keygen -t rsa -P "" -f /home/vagrant/.ssh/id_rsa
+	cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
+	#cp -f $RES_SSH_CONFIG ~/.ssh
 }
 
 # Call the functions
