@@ -8,7 +8,12 @@ function downloadAndExtract {
     wget -P /tmp/temp https://archive.apache.org/dist/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz  
     tar -xzvf /tmp/temp/apache-hive-3.1.3-bin.tar.gz -C /tmp/temp --remove-files  
     sudo mv /tmp/temp/apache-hive-3.1.3-bin /usr/local/hive  
-}  
+} 
+
+function removeWarning {
+    echo "Eliminando advertencia de Hive..."
+    sudo rm $HIVE_HOME/lib/log4j-slf4j-impl-2.17.1.jar
+}
 
 # Configurar variables de entorno de Hive
 function setupEnvironmentVars {
@@ -21,5 +26,6 @@ function setupEnvironmentVars {
 } 
 
 # Call the functions  
-downloadAndExtract  
-setupEnvironmentVars  
+downloadAndExtract 
+removeWarning
+setupEnvironmentVars
