@@ -76,6 +76,7 @@ setupHiveEnv
 installMySQL
 setupMetastoreDB
 setupHiveSite
+fixWarning
 installMySQLJavaConnector
 initMetastore
 setupHiveLocation
