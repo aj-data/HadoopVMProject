@@ -14,6 +14,7 @@
 
 function createTempFolder {
     echo "Creando carpeta temporal..."
+    mkdir temp
     mkdir /tmp/temp
 }
 

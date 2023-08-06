@@ -24,12 +24,12 @@ Vagrant.configure("2") do |config|
     node.vm.network :private_network, ip: '10.211.55.101'
     node.vm.hostname = 'node1'
     # replace Windows line endings with Unix line endings
-    #node.vm.binary = false
-    node.vm.provision :shell, path: "scripts/init-config.sh"
-    #node.vm.provision :shell, path: "scripts/user-config.sh"
-    node.vm.provision :shell, path: "scripts/ssh-config.sh"
-    node.vm.provision :shell, path: "scripts/setup-hadoop.sh"
-    #node.vm.provision :shell, path: "scripts/setup-hive.sh"
+    ##node.vm.binary = false
+    ##node.vm.provision :shell, path: "scripts/init-config.sh"
+    ###node.vm.provision :shell, path: "scripts/user-config.sh"
+    ##node.vm.provision :shell, path: "scripts/ssh-config.sh"
+    ##node.vm.provision :shell, path: "scripts/setup-hadoop.sh"
+    node.vm.provision :shell, path: "scripts/setup-hive.sh"
     #node.vm.provision :shell, path: "scripts/setup-metastore.sh"
     #node.vm.provision :shell, path: "scripts/setup-spark.sh"
     #node.vm.provision :shell, path: "scripts/setup-hbase.sh"

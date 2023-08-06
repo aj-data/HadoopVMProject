@@ -9,15 +9,17 @@ function downloadAndExtract {
     tar -xzvf /tmp/temp/apache-hive-3.1.3-bin.tar.gz -C /tmp/temp --remove-files  
     sudo mv /tmp/temp/apache-hive-3.1.3-bin /usr/local/hive  
 }  
-  
+
 # Configurar variables de entorno de Hive
 function setupEnvironmentVars {
     #echo "Setting up Hadoop environment variables..."
     echo "Configurando variables de entorno de Hive..."
     cp -f $HIVE_RES_DIR/hive.sh /etc/profile.d/hive.sh
 	. /etc/profile.d/hive.sh
+    echo "Agregando variables al PATH..."
+    /vagrant/resources/hadoop/hive.sh
 } 
-  
+
 # Call the functions  
 downloadAndExtract  
 setupEnvironmentVars  
