@@ -11,7 +11,7 @@ function setupEnvVars {
         else
             echo "$line is already in PATH"
         fi
-    done < /vagrant/resources/hadoop/hive.sh
+    done < /vagrant/resources/hive/hive.sh
 }
 
 setupEnvVars
