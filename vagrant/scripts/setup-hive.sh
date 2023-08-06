@@ -17,7 +17,7 @@ function setupEnvironmentVars {
     cp -f $HIVE_RES_DIR/hive.sh /etc/profile.d/hive.sh
 	. /etc/profile.d/hive.sh
     echo "Agregando variables al PATH..."
-    /vagrant/resources/hadoop/hive.sh
+    /vagrant/resources/hive/hive.sh
 } 
 
 # Call the functions  
