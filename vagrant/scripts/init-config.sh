@@ -45,11 +45,13 @@ function installJava {
 
 function setupSwap {
     # setup swapspace daemon to allow more memory usage.
+    echo "Instalando swapspace..."
     apt-get install -y swapspace
 }
 
 function setupUtilities {
     # so the `locate` command works
+    echo "Instalando utilidades..."
     apt-get install -y mlocate
     updatedb
     apt-get install -y ant
@@ -73,6 +75,6 @@ createTempFolder
 createScriptsFolder
 setupHosts
 installJava
-setupSwap
-setupUtilities
+#setupSwap
+#setupUtilities
 copyInitScript
