@@ -66,9 +66,9 @@ function initMetastore {
 function setupHiveLocation {
     #echo "Setting up default Hive location..."
     echo "Configurando ubicación predeterminada de Hive..."
-    hdfs dfs -mkdir -p /user/hive/warehouse
-    hdfs dfs -chmod g+w /tmp
-    hdfs dfs -chmod g+w /user/hive/warehouse
+    sudo -u vagrant hdfs dfs -mkdir -p /user/hive/warehouse
+    sudo -u vagrant hdfs dfs -chmod g+w /tmp
+    sudo -u vagrant hdfs dfs -chmod g+w /user/hive/warehouse
 }
 
 # Call the functions
