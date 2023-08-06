@@ -69,6 +69,12 @@ function formatHDFS {
     sudo -u vagrant $HADOOP_HOME/bin/hdfs namenode -format  
 }
 
+function startHDFS {
+    #echo "Starting HDFS..."
+    echo "Iniciando HDFS..."
+    sudo -u vagrant $HADOOP_HOME/sbin/start-dfs.sh
+}
+
 # Modificar mapred-site.xml
 function setupMapredSite {
     #echo "Setting up mapred-site.xml..."
@@ -83,6 +89,12 @@ function setupYarnSite {
     sudo cp -f $HADOOP_RES_DIR/yarn-site.xml  $HADOOP_HOME/etc/hadoop/yarn-site.xml
 }
 
+function startYarn {
+    #echo "Starting YARN..."
+    echo "Iniciando YARN..."
+    sudo -u vagrant $HADOOP_HOME/sbin/start-yarn.sh
+}
+
 # Call the functions
 downloadAndExtract
 setupEnvironmentVars
@@ -91,5 +103,7 @@ setupCoreSite
 setupHDFSDirs
 setupHdfsSite
 formatHDFS
+startHDFS
 setupMapredSite
 setupYarnSite
+startYarn
