@@ -24,6 +24,9 @@ function createSSHKey {
     echo "Generando clave ssh"
 	ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -C vagrant -q -P ""
 	cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
+	chmod 700 /home/vagrant/.ssh
+	chmod 644 /home/vagrant/.ssh/id_rsa.pub
+	chmod 600 /home/vagrant/.ssh/id_rsa
 	chown -R vagrant:vagrant /home/vagrant/.ssh
 }
 
