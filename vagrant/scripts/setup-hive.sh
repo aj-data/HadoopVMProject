@@ -23,7 +23,7 @@ function setupEnvironmentVars {
 	. /etc/profile.d/hive.sh
     echo "Agregando variables al PATH..."
     /vagrant/resources/hive/hive.sh
-} 
+}
 
 # Call the functions  
 downloadAndExtract 

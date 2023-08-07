@@ -30,7 +30,10 @@ function setupHiveSite {
     "javax.jdo.option.ConnectionDriverName com.mysql.cj.jdbc.Driver"    
     "javax.jdo.option.ConnectionUserName hiveuser"    
     "javax.jdo.option.ConnectionPassword hivepassword"  
-    "hive.server2.enable.doAs false"  
+    "hive.server2.enable.doAs false"
+    "mapreduce.framework.name yarn"
+    "mapreduce.application.classpath $HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share
+/hadoop/mapreduce/lib/*"  
     )  
 
     for i in "${properties[@]}"; do    
@@ -44,9 +47,9 @@ function setupHiveSite {
     done     
 }
 
-function fixWarning {
+function fixWarnings {
     echo "Corrigiendo advertencia de símbolo no válido..."
-    sudo sed -i "s/r&#8;/ /g" "/usr/local/hive/conf/hive-site.xml"
+    sudo sed -i "s/r&#8;/ /g" "/usr/local/hive/conf/hive-site.xml" 
 }
 
 function installMySQLJavaConnector {
@@ -76,7 +79,7 @@ setupHiveEnv
 installMySQL
 setupMetastoreDB
 setupHiveSite
-fixWarning
+fixWarnings
 installMySQLJavaConnector
 initMetastore
 setupHiveLocation
