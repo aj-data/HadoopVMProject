@@ -1,5 +1,7 @@
 #!/bin/bash  
-  
+
+source "/vagrant/scripts/common.sh"
+
 function installDependencies {  
     #echo "Installing dependencies..."
     echo "Instalando dependencias..."  

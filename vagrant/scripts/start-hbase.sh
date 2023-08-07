@@ -1,5 +1,7 @@
 #!/bin/bash  
-  
+
+source "/vagrant/scripts/common.sh"
+
 function startHBase {  
     #echo "Starting HBase..."
     echo "Incializando HBase...  

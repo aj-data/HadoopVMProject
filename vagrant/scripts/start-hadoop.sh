@@ -1,5 +1,6 @@
 #!/bin/bash  
-  
+
+source "/vagrant/scripts/common.sh"
 HADOOP_HOME=/home/hadoop/hadoop-3.3.0  
 
 function startHadoop {  

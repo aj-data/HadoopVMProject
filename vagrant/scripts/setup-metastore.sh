@@ -1,5 +1,7 @@
 #!/bin/bash  
 
+source "/vagrant/scripts/common.sh"
+
 HADOOP_HOME=/usr/local/hadoop
 HIVE_HOME=/usr/local/hive
 

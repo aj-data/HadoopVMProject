@@ -1,4 +1,6 @@
-#!/bin/bash  
+#!/bin/bash
+
+source "/vagrant/scripts/common.sh"
 
 function createUser {  
     #echo "Creating 'hadoop' user..."

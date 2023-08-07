@@ -1,5 +1,6 @@
 #!/bin/bash  
 
+source "/vagrant/scripts/common.sh"
 HBASE_HOME=/usr/local/hbase
 
 function downloadAndExtract {  
