@@ -34,39 +34,18 @@ function createHBaseDir {
     echo "Creando el directorio HBase en HDFS..."  
     hdfs dfs -mkdir /hbase  
 }  
-  
+
 function setupHBaseSite {  
-    #echo "Setting up hbase-site.xml..."
     echo "Configurando hbase-site.xml..."  
-    properties=(  
-    "hbase.rootdir hdfs://localhost:9000/hbase"  
-    "hbase.cluster.distributed true"  
-    "hbase.zookeeper.quorum localhost"  
-    "dfs.replication 1"  
-    "hbase.zookeeper.property.clientPort 2181"  
-    "hbase.zookeeper.property.dataDir /usr/local/hbase/zookeeper"  
-    "hbase.tmp.dir ./tmp"  
-    "hbase.unsafe.stream.capability.enforce false"  
-    "hbase.wal.provider filesystem"  
-    )  
-    
-    for i in "${properties[@]}"; do  
-        name=$(echo $i | cut -d' ' -f1)  
-        value=$(echo $i | cut -d' ' -f2)  
-        if grep -q "<name>$name</name>" $HBASE_HOME/conf/hbase-site.xml; then  
-            sed -i "/<name>$name<\/name>/!b;n;c<value>$value</value>" $HBASE_HOME/conf/hbase-site.xml  
-        else  
-            sed -i "/<\/configuration>/i <property>\n<name>$name</name>\n<value>$value</value>\n</property>" $HBASE_HOME/conf/hbase-site.xml  
-        fi  
-    done   
-}  
-  
+    sudo /vagrant/resources/hbase/hbase_props.sh
+}
+
 function startHBase {  
     #echo "Starting HBase..."
     echo "Iniciando HBase..."  
     $HBASE_HOME/bin/start-hbase.sh  
 }  
-  
+
 # Call the functions  
 downloadAndExtract  
 setupHBaseEnv  
