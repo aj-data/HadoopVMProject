@@ -37,7 +37,7 @@ function createHBaseDir {
 
 function setupHBaseSite {  
     echo "Configurando hbase-site.xml..."  
-    /vagrant/resources/hbase/hbase_props.sh
+    /vagrant/resources/hbase/hbase-props.sh
 }
 
 function startHBase {  
