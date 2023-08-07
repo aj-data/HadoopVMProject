@@ -55,6 +55,12 @@ function setupHiveLocation {
     sudo -u vagrant $HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/hive/warehouse
 }
 
+function startMetastore {
+    echo "Inicializando Hive"  
+    sudo -u vagrant hive --service metastore &  
+    sudo -u vagrant hive --service hiveserver2 &  
+}
+
 # Call the functions
 setupHiveEnv
 installMySQL
@@ -64,3 +70,4 @@ fixWarnings
 installMySQLJavaConnector
 initMetastore
 setupHiveLocation
+startMetastore

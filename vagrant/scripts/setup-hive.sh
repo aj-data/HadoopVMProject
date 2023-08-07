@@ -25,14 +25,7 @@ function removeWarning {
     sudo rm $HIVE_HOME/lib/log4j-slf4j-impl-2.17.1.jar
 }
 
-function startMetastore {
-    echo "Inicializando Hive"  
-    sudo -u vagrant hive --service metastore &  
-    sudo -u vagrant hive --service hiveserver2 &  
-}
-
 # Call the functions  
 downloadAndExtract
 setupEnvironmentVars
 removeWarning
-startMetastore
