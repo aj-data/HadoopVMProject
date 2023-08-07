@@ -37,15 +37,14 @@ function installJupyter {
     #echo "c.NotebookApp.username = 'jupyterusername'" >> ~/.jupyter/jupyter_notebook_config.py    
 }
 
+# Configurar variables de entorno de Jupyter
 function addEnvPath {
-    echo "Añadiendo ~/.local/bin a PATH..."
-    if ! echo $PATH | grep -q "~/.local/bin"; then
-        echo "export PATH=\$PATH:~/.local/bin" >> ~/.bashrc
-        source ~/.bashrc
-        echo "Added ~/.local/bin to PATH"
-    else
-        echo "~/.local/bin is already in PATH"
-    fi
+    #echo "Setting up Jupyter environment variables..."
+    echo "Configurando variables de entorno de Jupyter..."
+	cp -f /vagrant/resources/misc/jupyter.sh /etc/profile.d/jupyter.sh
+	. /etc/profile.d/jupyter.sh
+    echo "Agregando variables al PATH..."
+    /vagrant/resources/misc/jupyter-envs.sh
 }
 
 function generateJupyterConfig {

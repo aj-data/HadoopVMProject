@@ -28,7 +28,7 @@ function setupEnvironmentVars {
     echo "Agregando variables al PATH..."
     /vagrant/resources/hbase/hbase-envs.sh
 }
-  
+
 function createHBaseDir {  
     #echo "Creating HBase directory in HDFS..."
     echo "Creando el directorio HBase en HDFS..."  
