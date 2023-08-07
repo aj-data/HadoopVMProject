@@ -24,26 +24,8 @@ function setupMetastoreDB {
 
 function setupHiveSite {  
     echo "Configurando hive-site.xml..."  
-    cp $HIVE_HOME/conf/hive-default.xml.template $HIVE_HOME/conf/hive-site.xml 
-    properties=(  
-    "javax.jdo.option.ConnectionURL jdbc:mysql://localhost/metastore_db?createDatabaseIfNotExist=true"    
-    "javax.jdo.option.ConnectionDriverName com.mysql.cj.jdbc.Driver"    
-    "javax.jdo.option.ConnectionUserName hiveuser"    
-    "javax.jdo.option.ConnectionPassword hivepassword"  
-    "hive.server2.enable.doAs false"
-    "system:java.io.tmpdir /tmp/hive/java"
-    "system:user.name ${user.name}"  
-    )  
-
-    for i in "${properties[@]}"; do    
-        name=$(echo $i | cut -d' ' -f1)    
-        value=$(echo $i | cut -d' ' -f2-)    
-        if grep -q "<name>$name</name>" $HIVE_HOME/conf/hive-site.xml; then    
-            sed -i "/<name>$name<\/name>/!b;n;c<value>$value</value>" $HIVE_HOME/conf/hive-site.xml    
-        else    
-            sed -i "/<\/configuration>/i <property>\n<name>$name</name>\n<value>$value</value>\n</property>" $HIVE_HOME/conf/hive-site.xml    
-        fi    
-    done     
+    cp $HIVE_HOME/conf/hive-default.xml.template $HIVE_HOME/conf/hive-site.xml
+    /vagrant/resources/hive/hive_props.sh
 }
 
 function fixWarnings {
