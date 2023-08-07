@@ -31,9 +31,8 @@ function setupHiveSite {
     "javax.jdo.option.ConnectionUserName hiveuser"    
     "javax.jdo.option.ConnectionPassword hivepassword"  
     "hive.server2.enable.doAs false"
-    "mapreduce.framework.name yarn"
-    "mapreduce.application.classpath $HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share
-/hadoop/mapreduce/lib/*"  
+    "system:java.io.tmpdir /tmp/hive/java"
+    "system:user.name ${user.name}"  
     )  
 
     for i in "${properties[@]}"; do    
