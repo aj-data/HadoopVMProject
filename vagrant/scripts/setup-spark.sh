@@ -23,7 +23,7 @@ function setupEnvironmentVars {
 	cp -f $SPARK_RES_DIR/spark.sh /etc/profile.d/spark.sh
 	. /etc/profile.d/spark.sh
     echo "Agregando variables al PATH..."
-    /vagrant/resources/spark/spark_envs.sh
+    /vagrant/resources/spark/spark-envs.sh
 }
 
 # Call the functions  
