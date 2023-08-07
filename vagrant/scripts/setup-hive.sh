@@ -34,3 +34,4 @@ function startMetastore {
 downloadAndExtract 
 removeWarning
 setupEnvironmentVars
+startMetastore
