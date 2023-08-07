@@ -31,7 +31,7 @@ function startMetastore {
 }
 
 # Call the functions  
-downloadAndExtract 
+downloadAndExtract
 removeWarning
 setupEnvironmentVars
 startMetastore
