@@ -22,8 +22,8 @@ function setupHBaseEnv {
 # Configurar variables de entorno de HBase
 function setupEnvironmentVars {
     #echo "Setting up HBase environment variables..."
-    echo "Configurando variables de entorno de Hadoop..."
-	cp -f $HABASE_RES_DIR/hbase.sh /etc/profile.d/hbase.sh
+    echo "Configurando variables de entorno de HBase..."
+	cp -f $HBASE_RES_DIR/hbase.sh /etc/profile.d/hbase.sh
 	. /etc/profile.d/hbase.sh
     echo "Agregando variables al PATH..."
     /vagrant/resources/hbase/hbase-envs.sh
@@ -32,12 +32,12 @@ function setupEnvironmentVars {
 function createHBaseDir {  
     #echo "Creating HBase directory in HDFS..."
     echo "Creando el directorio HBase en HDFS..."  
-    hdfs dfs -mkdir /hbase  
+    sudo -u vagrant hdfs dfs -mkdir /hbase  
 }  
 
 function setupHBaseSite {  
     echo "Configurando hbase-site.xml..."  
-    sudo /vagrant/resources/hbase/hbase_props.sh
+    /vagrant/resources/hbase/hbase_props.sh
 }
 
 function startHBase {  
