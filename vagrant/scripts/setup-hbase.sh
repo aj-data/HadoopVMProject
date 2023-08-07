@@ -17,15 +17,17 @@ function setupHBaseEnv {
     echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64' >> /usr/local/hbase/conf/hbase-env.sh  
     echo 'export HBASE_REGIONSERVERS=/usr/local/hbase/conf/regionservers' >> /usr/local/hbase/conf/hbase-env.sh  
     echo 'export HBASE_MANAGES_ZK=true' >> /usr/local/hbase/conf/hbase-env.sh  
-}  
-  
-function setupBashrc {  
-    #echo "Setting up .bashrc..."
-    echo "Configurando .bashrc..."  
-    echo 'export HBASE_HOME=/usr/local/hbase' >> ~/.bashrc  
-    echo 'export PATH=$PATH:$HBASE_HOME/bin' >> ~/.bashrc  
-    source ~/.bashrc  
-}  
+}
+
+# Configurar variables de entorno de HBase
+function setupEnvironmentVars {
+    #echo "Setting up HBase environment variables..."
+    echo "Configurando variables de entorno de Hadoop..."
+	cp -f $HABASE_RES_DIR/hbase.sh /etc/profile.d/hbase.sh
+	. /etc/profile.d/hbase.sh
+    echo "Agregando variables al PATH..."
+    /vagrant/resources/hbase/hbase-envs.sh
+}
   
 function createHBaseDir {  
     #echo "Creating HBase directory in HDFS..."
@@ -68,6 +70,6 @@ function startHBase {
 # Call the functions  
 downloadAndExtract  
 setupHBaseEnv  
-setupBashrc  
+setupEnvironmentVars  
 createHBaseDir  
 setupHBaseSite  
