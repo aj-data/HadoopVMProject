@@ -13,18 +13,17 @@ function downloadAndExtract {
     tar -xzvf /tmp/temp/spark-3.4.1-bin-hadoop3.tgz -C /tmp/temp --remove-files  
     sudo mv /tmp/temp/spark-3.4.1-bin-hadoop3 /usr/local/spark  
 }  
-  
-function setupEnvironmentVars {  
+
+# Configurar variables de entorno de Spark
+function setupEnvironmentVars {
     #echo "Setting up Spark environment variables..."
-    echo "Configurando variables de entorno de Spark..."  
-    echo 'export SPARK_HOME=/usr/local/spark' >> ~/.bashrc  
-    echo 'export PATH=$PATH:$SPARK_HOME/bin' >> ~/.bashrc  
-    echo 'export SPARK_LOCAL_IP=localhost' >> ~/.bashrc  
-    echo 'export PYSPARK_PYTHON=/usr/bin/python3' >> ~/.bashrc  
-    echo 'export PYTHONPATH=$(ZIPS=("$SPARK_HOME"/python/lib/*.zip); IFS=:; echo "${ZIPS[*]}"):$PYTHONPATH' >> ~/.bashrc  
-    source ~/.bashrc  
-}  
-  
+    echo "Configurando variables de entorno de Hadoop..."
+	cp -f $SPARK_RES_DIR/spark.sh /etc/profile.d/spark.sh
+	. /etc/profile.d/spark.sh
+    echo "Agregando variables al PATH..."
+    /vagrant/resources/spark/spark_envs.sh
+}
+
 # Call the functions  
 installDependencies  
 downloadAndExtract  

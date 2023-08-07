@@ -12,12 +12,12 @@ function downloadAndExtract {
 
 # Configurar variables de entorno de Hive
 function setupEnvironmentVars {
-    #echo "Setting up Hadoop environment variables..."
-    echo "Configurando variables de entorno de Hive..."
-    cp -f $HIVE_RES_DIR/hive.sh /etc/profile.d/hive.sh
+    #echo "Setting up Hive environment variables..."
+    echo "Configurando variables de entorno de Hadoop..."
+	cp -f $HIVE_RES_DIR/hive.sh /etc/profile.d/hive.sh
 	. /etc/profile.d/hive.sh
     echo "Agregando variables al PATH..."
-    /vagrant/resources/hive/hive.sh
+    /vagrant/resources/hive/hive_envs.sh
 }
 
 function removeWarning {
