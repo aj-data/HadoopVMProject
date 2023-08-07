@@ -27,7 +27,7 @@ function setupEnvironmentVars {
 
 function startMetastore {
     echo "Iniciando metastore..."
-    sudo -u vagrant /vagrant/resources/hive/start-hive.sh
+    sudo -u vagrant /vagrant/scripts/start-hive.sh
 }
 
 # Call the functions  
