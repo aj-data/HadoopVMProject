@@ -31,7 +31,7 @@ function setupHiveSite {
     "javax.jdo.option.ConnectionUserName hiveuser"    
     "javax.jdo.option.ConnectionPassword hivepassword"  
     "hive.server2.enable.doAs false"
-    "system:java.io.tmpdir /tmp/hive/java"
+    "system:java.io.tmpdir /temp/hive/java"
     "system:user.name ${user.name}"  
     )  
 
