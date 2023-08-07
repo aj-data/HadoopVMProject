@@ -25,6 +25,11 @@ function setupEnvironmentVars {
     /vagrant/resources/hive/hive.sh
 }
 
+function startMetastore {
+    echo "Iniciando metastore..."
+    sudo -u vagrant /vagrant/resources/hive/start-hive.sh
+}
+
 # Call the functions  
 downloadAndExtract 
 removeWarning
