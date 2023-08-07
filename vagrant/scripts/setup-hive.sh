@@ -26,8 +26,9 @@ function removeWarning {
 }
 
 function startMetastore {
-    echo "Iniciando metastore..."
-    sudo -u vagrant /vagrant/scripts/start-hive.sh
+    echo "Inicializando Hive"  
+    sudo -u vagrant hive --service metastore &  
+    sudo -u vagrant hive --service hiveserver2 &  
 }
 
 # Call the functions  
