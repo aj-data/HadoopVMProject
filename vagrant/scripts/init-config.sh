@@ -41,8 +41,8 @@ function installJava {
         sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_221/bin/java 1
         sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_221/bin/javac 1
     else
-        sudo apt-get update 
-        sudo apt-get install -y openjdk-8-jdk
+        apt-get update 
+        apt-get install -y openjdk-8-jdk-headless
     fi
 }
 
