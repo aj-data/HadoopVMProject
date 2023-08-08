@@ -17,6 +17,7 @@ function createTempFolder {
     mkdir temp
     mkdir /tmp/temp
     sudo -u vagrant mkdir temp
+    sudo chown vagrant:vagrant /home/vagrant/temp
 }
 
 function createScriptsFolder {
