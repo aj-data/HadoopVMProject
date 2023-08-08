@@ -10,7 +10,7 @@ function downloadAndExtract {
     if [[ -e /vagrant/resources/hadoop/hadoop-3.3.5.tar.gz ]]; then
         tar -xzvf /vagrant/resources/hadoop/hadoop-3.3.5.tar.gz -C /tmp/temp --remove-files  
     else
-        wget -P /tmp/temp https://dlcdn.apache.org/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz  
+        wget -P /tmp/temp https://archive.apache.org/dist/hadoop/common/hadoop-3.3.5/hadoop-3.3.5.tar.gz
         tar -xzvf /tmp/temp/hadoop-3.3.5.tar.gz -C /tmp/temp --remove-files  
     fi
     # Verifica si /usr/local/hadoop es un archivo no directorio y lo elimina si es así  

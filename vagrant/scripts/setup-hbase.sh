@@ -6,7 +6,7 @@ HBASE_HOME=/usr/local/hbase
 function downloadAndExtract {  
     #echo "Downloading and extracting HBase..."
     echo "Descargando y extrayendo HBase..."  
-    wget -P /tmp/temp https://dlcdn.apache.org/hbase/2.5.5/hbase-2.5.5-bin.tar.gz  
+    wget -P /tmp/temp https://archive.apache.org/dist/hbase/2.5.5/hbase-2.5.5-bin.tar.gz
     tar -xzvf /tmp/temp/hbase-2.5.5-bin.tar.gz -C /tmp/temp --remove-files  
     sudo mv /tmp/temp/hbase-2.5.5 /usr/local/hbase  
 }  
