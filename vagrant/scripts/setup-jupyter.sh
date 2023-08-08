@@ -69,7 +69,7 @@ function setupJupyter {
 installPythonAndPip
 upgradePip
 installJupyter
-addEnvPath
+#addEnvPath
 generateJupyterConfig
 setupJupyter  
 
