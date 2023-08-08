@@ -51,8 +51,8 @@ function addEnvPath {
 
 function generateJupyterConfig {
     echo "Generando configuración de Jupyter..."
-    #sudo -u vagrant jupyter notebook --generate-config
-    su - vagrant -c "jupyter notebook --generate-config"  
+    sudo -u vagrant jupyter notebook --generate-config
+    #su - vagrant -c "jupyter notebook --generate-config"  
 }
 
 function setupJupyter {
