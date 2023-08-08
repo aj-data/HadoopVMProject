@@ -66,8 +66,9 @@ function setupJupyter {
 }
 
 function startJupyter {
-    echo "Inicializando Jupyter"  
-    sudo -u vagrant jupyter notebook   
+    echo "Inicializando Jupyter"
+    su - vagrant -c "jupyter notebook"
+    #sudo -u vagrant jupyter notebook   
 }
 
 jupyter notebook
