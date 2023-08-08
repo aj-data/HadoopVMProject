@@ -32,7 +32,7 @@ function setupEnvironmentVars {
 function createHBaseDir {  
     #echo "Creating HBase directory in HDFS..."
     echo "Creando el directorio HBase en HDFS..."  
-    sudo -u vagrant hdfs dfs -mkdir /hbase  
+    sudo -u vagrant /usr/local/hadoop/bin/hdfs dfs -mkdir /hbase
 }  
 
 function setupHBaseSite {  
