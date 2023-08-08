@@ -20,7 +20,7 @@ hive --service hiveserver2 >> $LOG 2>&1 &
 echo "HiveServer2 iniciado correctamente." | tee -a $LOG
 
 echo "Iniciando HBase..." | tee -a $LOG
-$HBASE_HOME/bin/start-hbase.sh >> $LOG 2>&1
+/usr/local/hbase/bin/start-hbase.sh >> $LOG 2>&1
 echo "HBase iniciado correctamente." | tee -a $LOG
 
 echo "Iniciando Jupyter..." | tee -a $LOG
