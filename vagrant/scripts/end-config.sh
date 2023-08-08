@@ -1,5 +1,10 @@
 #!/bin/bash
 
+function HBaseFolder {
+    echo "Otorgando permisos a carpeta de HBase"
+    sudo chown -R vagrant:vagrant /usr/local/hbase
+}
+
 function createInitScrip {
     echo "Copiando init-script.sh y otorgando permisos de ejecución"
     
@@ -10,5 +15,6 @@ function createInitScrip {
     chmod +x "$DEST_FILE"
 }
 
-# Call the functions 
+# Call the functions
+HBaseFolder
 createInitScrip
