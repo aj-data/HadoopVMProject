@@ -43,7 +43,7 @@ function setupHBaseSite {
 function startHBase {  
     #echo "Starting HBase..."
     echo "Iniciando HBase..."  
-    $HBASE_HOME/bin/start-hbase.sh  
+    $HBASE_HOME/bin/start-hbase.sh
 }  
 
 # Call the functions  
@@ -51,4 +51,5 @@ downloadAndExtract
 setupHBaseEnv  
 setupEnvironmentVars  
 createHBaseDir  
-setupHBaseSite  
+setupHBaseSite
+startHBase

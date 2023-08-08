@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function setupHBaseSite {
-    echo "Configurando hbase-site.xml..."
+    echo "Agregando propiedades en hbase-site.xml..."
     properties=(  
     "hbase.rootdir hdfs://localhost:9000/hbase"  
     "hbase.cluster.distributed true"  
