@@ -54,12 +54,12 @@ function generateJupyterConfig {
 
 function setupJupyter {
     sudo -u vagrant echo "Configurando Jupyter..."
-    sudo -u vagrant echo "c.NotebookApp.ip = '0.0.0.0'" >> ~/.jupyter/jupyter_notebook_config.py  
-    sudo -u vagrant echo "c.NotebookApp.port = 8080" >> ~/.jupyter/jupyter_notebook_config.py  
-    sudo -u vagrant echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.py  
+    sudo -u vagrant echo "c.NotebookApp.ip = '0.0.0.0'" >> /home/vagrant/.jupyter/jupyter_notebook_config.py  
+    sudo -u vagrant echo "c.NotebookApp.port = 8080" >> /home/vagrant/.jupyter/jupyter_notebook_config.py  
+    sudo -u vagrant echo "c.NotebookApp.open_browser = False" >> /home/vagrant/.jupyter/jupyter_notebook_config.py  
     #echo "c.NotebookApp.password_required = True" >> ~/.jupyter/jupyter_notebook_config.py  
     #echo "from notebook.auth import passwd" >> ~/.jupyter/jupyter_notebook_config.py  
-    sudo -u vagrant echo "c.NotebookApp.password = 'sha1:b39920d9193882c2f3416adba59f639555e12657'" >> ~/.jupyter/jupyter_notebook_config.py 
+    sudo -u vagrant echo "c.NotebookApp.password = 'sha1:b39920d9193882c2f3416adba59f639555e12657'" >> /home/vagrant/.jupyter/jupyter_notebook_config.py 
 }
 
 # Call the functions  
