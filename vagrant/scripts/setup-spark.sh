@@ -11,7 +11,7 @@ function installDependencies {
 function downloadAndExtract {  
     #echo "Downloading and extracting Spark..."
     echo "Descargando y extrayendo Spark..."  
-    wget -P /tmp/temp https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz  
+    wget -P /tmp/temp https://archive.apache.org/dist/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
     tar -xzvf /tmp/temp/spark-3.4.1-bin-hadoop3.tgz -C /tmp/temp --remove-files  
     sudo mv /tmp/temp/spark-3.4.1-bin-hadoop3 /usr/local/spark
     #sudo chown -R vagrant:vagrant /usr/local/spark
