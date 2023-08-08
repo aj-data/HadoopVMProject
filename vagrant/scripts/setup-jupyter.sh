@@ -43,7 +43,7 @@ function addEnvPath {
     echo "Configurando variables de entorno de Jupyter..."
 	cp -f /vagrant/resources/misc/jupyter.sh /etc/profile.d/jupyter.sh
 	. /etc/profile.d/jupyter.sh
-    echo "Agregando variables al PATH..."jps
+    echo "Agregando variables al PATH..."
     /vagrant/resources/misc/jupyter-envs.sh
 }
 

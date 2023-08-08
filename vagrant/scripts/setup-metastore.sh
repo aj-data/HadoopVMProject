@@ -72,4 +72,4 @@ fixWarnings
 installMySQLJavaConnector
 initMetastore
 setupHiveLocation
-startMetastore
+#startMetastore
