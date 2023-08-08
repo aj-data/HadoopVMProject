@@ -65,11 +65,19 @@ function setupJupyter {
     sudo -u vagrant echo "c.NotebookApp.password = 'sha1:b39920d9193882c2f3416adba59f639555e12657'" >> /home/vagrant/.jupyter/jupyter_notebook_config.py 
 }
 
+function startJupyter {
+    echo "Inicializando Jupyter"  
+    sudo -u vagrant jupyter notebook   
+}
+
+jupyter notebook
+
 # Call the functions  
 installPythonAndPip
 upgradePip
 installJupyter
 #addEnvPath
 generateJupyterConfig
-setupJupyter  
+setupJupyter
+startJupyter
 

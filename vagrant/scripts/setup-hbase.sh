@@ -43,7 +43,7 @@ function setupHBaseSite {
 function startHBase {  
     #echo "Starting HBase..."
     echo "Iniciando HBase..."
-    $HBASE_HOME/bin/start-hbase.sh
+    sudo -u vagrant /usr/local/hbase/bin/start-hbase.sh
 }  
 
 # Call the functions  
@@ -52,4 +52,4 @@ setupHBaseEnv
 setupEnvironmentVars  
 createHBaseDir  
 setupHBaseSite
-#startHBase
+startHBase
