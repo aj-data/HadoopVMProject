@@ -67,11 +67,9 @@ function setupJupyter {
 
 function startJupyter {
     echo "Inicializando Jupyter"
-    su - vagrant -c "jupyter notebook"
+    su - vagrant -c "jupyter notebook" &
     #sudo -u vagrant jupyter notebook   
 }
-
-jupyter notebook
 
 # Call the functions  
 installPythonAndPip
