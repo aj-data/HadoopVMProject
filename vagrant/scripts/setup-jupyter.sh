@@ -5,13 +5,14 @@ source "/vagrant/scripts/common.sh"
 function installPythonAndPip {  
     #echo "Installing Python and Pip..."
     echo "Instalando Python y Pip..."  
-    sudo apt install -y python3 python3-pip  
+    sudo apt-get install -y python3 python3-pip  
 }  
   
 function upgradePip {  
     #echo "Upgrading Pip..."
     echo "Actualizando Pip..."  
-    sudo pip3 install --upgrade pip  
+    #pip3 install --upgrade pip
+    su - vagrant -c "pip3 install --upgrade pip"   
 }  
   
 #function installVirtualEnv {  
@@ -33,7 +34,8 @@ function installJupyter {
     #echo "Activando entorno virtual..."
     #source ~/mientorno/entornojupyter/bin/activate
     echo "Instalando Jupyter..."
-    pip install jupyter 
+    #pip install jupyter
+    su - vagrant -c "pip3 install jupyter" 
     #echo "c.NotebookApp.username = 'jupyterusername'" >> ~/.jupyter/jupyter_notebook_config.py    
 }
 
