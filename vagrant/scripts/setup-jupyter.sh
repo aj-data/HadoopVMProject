@@ -56,7 +56,7 @@ function generateJupyterConfig {
 }
 
 function setupJupyter {
-    sudo -u vagrant echo "Configurando Jupyter..."
+    echo "Configurando Jupyter..."
     sudo -u vagrant echo "c.NotebookApp.ip = '0.0.0.0'" >> /home/vagrant/.jupyter/jupyter_notebook_config.py  
     sudo -u vagrant echo "c.NotebookApp.port = 8080" >> /home/vagrant/.jupyter/jupyter_notebook_config.py  
     sudo -u vagrant echo "c.NotebookApp.open_browser = False" >> /home/vagrant/.jupyter/jupyter_notebook_config.py  
