@@ -44,7 +44,7 @@ function setupHBaseSite {
 function startHBase {  
     #echo "Starting HBase..."
     echo "Iniciando HBase..."
-    sudo -u vagrant /usr/local/hbase/bin/start-hbase.sh
+    sudo -u vagrant /usr/local/hbase/bin/start-hbase.sh &
 }  
 
 # Call the functions  
