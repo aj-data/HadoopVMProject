@@ -16,5 +16,5 @@ function createInitScrip {
 }
 
 # Call the functions
-HBaseFolder
+#HBaseFolder
 createInitScrip
