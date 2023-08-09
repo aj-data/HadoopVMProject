@@ -8,7 +8,8 @@ function downloadAndExtract {
     echo "Descargando y extrayendo HBase..."  
     wget -P /tmp/temp https://archive.apache.org/dist/hbase/2.5.5/hbase-2.5.5-bin.tar.gz
     tar -xzvf /tmp/temp/hbase-2.5.5-bin.tar.gz -C /tmp/temp --remove-files  
-    sudo mv /tmp/temp/hbase-2.5.5 /usr/local/hbase  
+    sudo mv /tmp/temp/hbase-2.5.5 /usr/local/hbase
+    sudo chown -R vagrant:vagrant /usr/local/hbase 
 }  
   
 function setupHBaseEnv {  
