@@ -27,7 +27,7 @@ function setupMetastoreDB {
 function setupHiveSite {  
     echo "Configurando hive-site.xml..."  
     cp $HIVE_HOME/conf/hive-default.xml.template $HIVE_HOME/conf/hive-site.xml
-    sudo /vagrant/resources/hive/hive_props.sh
+    /vagrant/resources/hive/hive-props.sh
 }
 
 function fixWarnings {
