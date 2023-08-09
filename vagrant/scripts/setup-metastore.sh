@@ -39,9 +39,9 @@ function installMySQLJavaConnector {
     #echo "Installing MySQL Java Connector..."
     echo "Instalando MySQL Java Connector..."
     #wget -P /tmp/temp https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-8.0.32.tar.gz  
-    cp -f /vagrant/resources/misc/mysql-connector-j-8.1.0.tar.gz /tmp/temp/mysql-connector-j-8.1.0.tar.gz
+    sudo cp -f /vagrant/resources/misc/mysql-connector-j-8.1.0.tar.gz /tmp/temp/mysql-connector-j-8.1.0.tar.gz
     tar -xzvf /tmp/temp/mysql-connector-j-8.1.0.tar.gz -C /tmp/temp --remove-files  
-    cp /tmp/temp/mysql-connector-j-8.1.0/mysql-connector-j-8.1.0.jar $HIVE_HOME/lib/  
+    mv /tmp/temp/mysql-connector-j-8.1.0/mysql-connector-j-8.1.0.jar $HIVE_HOME/lib/  
 }
 
 function initMetastore {
