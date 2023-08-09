@@ -7,7 +7,8 @@ function downloadAndExtract {
     echo "Descargando e instalando Hive..."  
     wget -P /tmp/temp https://archive.apache.org/dist/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz  
     tar -xzvf /tmp/temp/apache-hive-3.1.3-bin.tar.gz -C /tmp/temp --remove-files  
-    sudo mv /tmp/temp/apache-hive-3.1.3-bin /usr/local/hive  
+    sudo mv /tmp/temp/apache-hive-3.1.3-bin /usr/local/hive
+    sudo chown -R vagrant:vagrant /usr/local/hive
 } 
 
 # Configurar variables de entorno de Hive
