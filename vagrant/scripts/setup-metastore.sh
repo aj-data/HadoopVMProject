@@ -67,9 +67,9 @@ function startMetastore {
     #sudo -u vagrant $HIVE_HOME/bin/hive --service metastore &
     #su - vagrant "$HIVE_HOME/bin/hive --service metastore &"
     sudo -u vagrant mkdir /usr/local/hive/logs
-    sudo -u vagrant nohup hive --service metastore < /dev/null > /usr/local/hive/logs/hive_metastore_`date +"%Y%m%d%H%M%S"`.log 2>&1 &
+    sudo -u vagrant nohup $HADOOP_HOME/bin/hive --service metastore < /dev/null > /usr/local/hive/logs/hive_metastore_`date +"%Y%m%d%H%M%S"`.log 2>&1 &
     #su -u vagrant "$HIVE_HOME/bin/hive --service hiveserver2 &"
-    sudo -u vagrant nohup hive --service hiveserver2 < /dev/null > /usr/local/hive/logs/hive_server2_`date +"%Y%m%d%H%M%S"`.log 2>&1 &
+    sudo -u vagrant nohup $HADOOP_HOME/bin/hive --service hiveserver2 < /dev/null > /usr/local/hive/logs/hive_server2_`date +"%Y%m%d%H%M%S"`.log 2>&1 &
 }
 
 # Call the functions
