@@ -92,7 +92,7 @@ function setupYarnSite {
 function startYarn {
     #echo "Starting YARN..."
     echo "Iniciando YARN..."
-    sudo -u vagrant -c "start-yarn.sh"
+    su - vagrant -c "start-yarn.sh"
 }
 
 # Call the functions
