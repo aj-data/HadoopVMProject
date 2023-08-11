@@ -47,21 +47,27 @@ function installMySQLJavaConnector {
 function initMetastore {
     #echo "Initializing Hive metastore..."
     echo "Inicializando metastore de Hive..."
-    sudo -u vagrant $HIVE_HOME/bin/schematool -initSchema -dbType mysql
+    #sudo -u vagrant $HIVE_HOME/bin/schematool -initSchema -dbType mysql
+    su - vagrant "sudo -u vagrant $HIVE_HOME/bin/schematool -initSchema -dbType mysql"
 }
 
 function setupHiveLocation {
     #echo "Setting up default Hive location..."
     echo "Configurando ubicación predeterminada de Hive..."
-    sudo -u vagrant $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hive/warehouse
-    sudo -u vagrant $HADOOP_HOME/bin/hdfs dfs -chmod g+w /tmp
-    sudo -u vagrant $HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/hive/warehouse
+    #sudo -u vagrant $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hive/warehouse
+    su - vagrant "$HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hive/warehouse"
+    #sudo -u vagrant $HADOOP_HOME/bin/hdfs dfs -chmod g+w /tmp
+    su - vagrant "$HADOOP_HOME/bin/hdfs dfs -chmod g+w /tmp"
+    #sudo -u vagrant $HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/hive/warehouse
+    su - vagrant "$HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/hive/warehouse"
 }
 
 function startMetastore {
     echo "Inicializando Hive"  
-    sudo -u vagrant $HIVE_HOME/bin/hive --service metastore &
-    sudo -u vagrant $HIVE_HOME/bin/hive --service hiveserver2 &
+    #sudo -u vagrant $HIVE_HOME/bin/hive --service metastore &
+    su - vagrant "$HIVE_HOME/bin/hive --service metastore &"
+    #sudo -u vagrant $HIVE_HOME/bin/hive --service hiveserver2 &
+    su -u vagrant "$HIVE_HOME/bin/hive --service hiveserver2 &"
 }
 
 # Call the functions
