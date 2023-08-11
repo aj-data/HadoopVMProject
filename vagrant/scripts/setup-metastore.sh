@@ -46,7 +46,7 @@ function installMySQLJavaConnector {
 
 function initMetastore {
     #echo "Initializing Hive metastore..."
-    echo "Inicializando metastore de Hive..."
+    echo "Inicializando schema de MySql..."
     sudo -u vagrant $HIVE_HOME/bin/schematool -initSchema -dbType mysql
     #su - vagrant "sudo -u vagrant $HIVE_HOME/bin/schematool -initSchema -dbType mysql"
 }
@@ -63,7 +63,7 @@ function setupHiveLocation {
 }
 
 function startMetastore {
-    echo "Inicializando Hive"  
+    echo "Inicializando metastore de Hive"  
     #sudo -u vagrant $HIVE_HOME/bin/hive --service metastore &
     #su - vagrant "$HIVE_HOME/bin/hive --service metastore &"
     sudo -u vagrant mkdir /usr/local/hive/logs
