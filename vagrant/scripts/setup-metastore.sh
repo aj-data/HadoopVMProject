@@ -64,10 +64,12 @@ function setupHiveLocation {
 
 function startMetastore {
     echo "Inicializando Hive"  
-    sudo -u vagrant $HIVE_HOME/bin/hive --service metastore &
+    #sudo -u vagrant $HIVE_HOME/bin/hive --service metastore &
     #su - vagrant "$HIVE_HOME/bin/hive --service metastore &"
-    sudo -u vagrant $HIVE_HOME/bin/hive --service hiveserver2 &
+    nohup hive --service metastore < /dev/null > /usr/local/hive/logs/hive_metastore_`date +"%Y%m%d%H%M%S"`.log 2>&1 &
+    #sudo -u vagrant $HIVE_HOME/bin/hive --service hiveserver2 &
     #su -u vagrant "$HIVE_HOME/bin/hive --service hiveserver2 &"
+    nohup hive --service hiveserver2 < /dev/null > /usr/local/hive/logs/hive_server2_`date +"%Y%m%d%H%M%S"`.log 2>&1 &
 }
 
 # Call the functions
