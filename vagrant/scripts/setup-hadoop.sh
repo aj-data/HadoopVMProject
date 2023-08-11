@@ -72,7 +72,7 @@ function formatHDFS {
 function startHDFS {
     #echo "Starting HDFS..."
     echo "Iniciando HDFS..."
-    sudo -u vagrant start-dfs.sh
+    su - vagrant -c "start-dfs.sh"
 }
 
 # Modificar mapred-site.xml
@@ -92,7 +92,7 @@ function setupYarnSite {
 function startYarn {
     #echo "Starting YARN..."
     echo "Iniciando YARN..."
-    sudo -u vagrant start-yarn.sh
+    sudo -u vagrant -c "start-yarn.sh"
 }
 
 # Call the functions
