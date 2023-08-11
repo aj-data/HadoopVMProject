@@ -16,7 +16,7 @@ function createTempFolder {
     echo "Creando carpeta temporal..."
     mkdir temp
     mkdir /tmp/temp
-    sudo -u vagrant mkdir temp
+    sudo -u vagrant mkdir /home/vagrant/temp
     sudo chown vagrant:vagrant /home/vagrant/temp
 }
 
