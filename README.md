@@ -1,9 +1,21 @@
 # HadoopVMProject
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac ullamcorper arcu, pulvinar gravida orci. Nulla vehicula, quam elementum hendrerit dignissim, felis dolor laoreet sem, vitae gravida eros eros ut ipsum. Sed luctus sapien non sem congue maximus. Integer dolor nisi, ornare nec purus sed, sollicitudin semper metus. Nunc efficitur augue metus, nec pulvinar velit dictum vitae. Etiam in vestibulum risus. Quisque vitae tincidunt nulla. Suspendisse potenti. Quisque gravida turpis ut gravida laoreet. Nulla id eros elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin dignissim nisi dolor, et rutrum magna pharetra quis. Aenean condimentum risus sit amet odio auctor finibus. Integer venenatis dignissim dignissim. Aliquam in urna eget velit lacinia efficitur.
+This repository contains a Vagrant configuration for setting up a Hadoop cluster with Hive, Spark, and HBase. The configuration is designed to run on a single machine using VirtualBox and Vagrant.
 
-Duis ligula erat, consequat non cursus sed, semper sed ante. Maecenas egestas, lectus a sollicitudin sodales, urna metus dignissim est, at vestibulum risus eros vel enim. Fusce porttitor ante non ligula pharetra rutrum. Curabitur ullamcorper condimentum sagittis. Fusce facilisis congue mauris. Proin felis diam, mollis nec libero vitae, facilisis porttitor metus. Vivamus rhoncus accumsan risus, id efficitur felis vulputate a. Nunc ac nulla vitae magna tempus faucibus. Praesent congue porta dui feugiat mattis. Etiam libero massa, convallis at placerat eget, vehicula pharetra libero.
+The repository contains several scripts that are used to provision the virtual machines with the necessary software and configuration. These scripts include:
 
-Vivamus aliquam massa eu justo viverra condimentum. Proin at ligula nulla. Vivamus in justo sit amet risus rutrum facilisis. Ut vel magna luctus, imperdiet quam sodales, fermentum purus. Cras tempus quam quis vulputate varius. Curabitur quis fringilla purus. Praesent vitae tortor ut elit tincidunt porttitor. Morbi interdum mi et nunc vehicula porta. Mauris vulputate commodo odio nec bibendum. Aliquam ut aliquet justo. Duis sit amet aliquet ipsum, et elementum risus.
+- init-config.sh: This script sets up the environment variables required for the other scripts to function properly.
+- ssh-config.sh: This script sets up passwordless SSH between the virtual machines.
+- setup-hadoop.sh: This script installs and configures Hadoop on the virtual machines.
+- setup-hive.sh: This script installs and configures Hive on the virtual machines.
+- setup-metastore.sh: This script initializes the schema for the Hive metastore using the MySQL database.
+- setup-spark.sh: This script installs and configures Spark on the virtual machines.
+- setup-hbase.sh: This script installs and configures HBase on the virtual machines.
+- setup-jupyter.sh: This script installs and configures Jupyter Notebook on the virtual machines.
+- end-config.sh: This script sets up the environment variables required for the virtual machines to function properly.
+- kickoff.sh: This script starts the Hadoop services on the virtual machines.
+- start_hdp_hv_mtst.sh: This script starts the Hadoop, Hive, and Metastore services on the virtual machines.
 
-Morbi finibus viverra nibh nec posuere. Quisque egestas, quam in efficitur facilisis, purus nunc laoreet est, aliquet fringilla sem arcu at metus. Nunc rhoncus dui ut scelerisque consectetur. Vestibulum luctus ac nisl ac suscipit. Cras nulla nibh, congue id porta non, facilisis quis nisi. Suspendisse turpis nisi, porta non volutpat et, tincidunt sed mi. Phasellus laoreet, massa a accumsan egestas, lectus quam feugiat dui, auctor auctor risus tellus ut augue. Cras consectetur odio mi, vel viverra dolor dapibus non.
+The Vagrantfile contains the configuration for the virtual machines, including the network settings and the provisioning scripts to run.
+
+To use the repository, you must have VirtualBox and Vagrant installed on your machine. Once you have installed these dependencies, you can clone the repository and run the vagrant up command to start the virtual machines. The provisioning scripts will automatically install and configure the necessary software.
