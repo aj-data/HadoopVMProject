@@ -12,11 +12,13 @@ start-all.sh >> $LOG 2>&1
 echo "Hadoop iniciado correctamente." | tee -a $LOG
 
 echo "Iniciando metastore de Hive..." | tee -a $LOG
-hive --service metastore >> $LOG 2>&1 &
+#hive --service metastore >> $LOG 2>&1 &
+/usr/local/hive/bin/hive --service metastore >> $LOG 2>&1 &
 echo "Metastore de Hive iniciado correctamente." | tee -a $LOG
 
 echo "Iniciando HiveServer2..." | tee -a $LOG
-hive --service hiveserver2 >> $LOG 2>&1 &
+#hive --service hiveserver2 >> $LOG 2>&1 &
+/usr/local/hive/bin/hive --service hiveserver2 >> $LOG 2>&1 &
 echo "HiveServer2 iniciado correctamente." | tee -a $LOG
 
 echo "Iniciando HBase..." | tee -a $LOG
