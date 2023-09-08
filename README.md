@@ -12,35 +12,19 @@ Clone the repository in your local machine:
 
 Browse into the "vagrant" folder:
 
-    <html>
-      <head>
-      cd HadoopVMProject/vagrant
-      </head>
-    </html>
+    cd HadoopVMProject/vagrant
 
 Provision the machine (it could take up to 30 minutes depending on you internet speed):
 
-    <html>
-      <head>
-      vagrant up
-      </head>
-    </html>
+    vagrant up
 
 Once the machine is provisioned access to it via ssh:
 
-    <html>
-      <head>
-      vagrant ssh
-      </head>
-    </html>
+    vagrant ssh
 
 Start the services:
-
-    <html>
-      <head>
-      ./init-script.sh
-      </head>
-    </html>
+    
+    ./init-script.sh
 
 you can clone the repository and run the "vagrant up" command to start the virtual machines. The provisioning scripts will automatically install and configure the necessary software.
 
