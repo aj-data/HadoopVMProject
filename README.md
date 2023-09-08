@@ -8,11 +8,7 @@ To use the repository, you must have VirtualBox and Vagrant installed on your ma
 
 Clone the repository in your local machine:
 
-    <html>
-      <head>
-      git clone https://github.com/aj-data/HadoopVMProject.git
-      </head>
-    </html>
+    git clone https://github.com/aj-data/HadoopVMProject.git
 
 Browse into the "vagrant" folder:
 
